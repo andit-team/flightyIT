@@ -1,4 +1,4 @@
-<p align="center"><img src="https://img.favpng.com/17/1/16/airplane-airline-ticket-travel-icon-png-favpng-euH1p5iPZpeypQVAyCNSHVUE6.jpg" width="400"></p>
+<p align="center"><img src="https://lh3.googleusercontent.com/proxy/Z8GFVqGUK4B0_GPFpb3Wyp5x0luF3wneUv3bksBg-NTqH-kNR1MGuG4Jxdznx63zEWomsaJNd6P_fNp5Bw-6_w" width="400"></p>
 
 <p align="center">
 <a href="#"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -13,12 +13,6 @@ FlightyIT is a web application with expressive, elegant syntax. We believe devel
 
 
 flightyIT is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning flightyIT
-
-flightyIT has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
 ## Contributing
 
