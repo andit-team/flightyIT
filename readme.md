@@ -1,4 +1,4 @@
-<p align="center"><img src="https://lh3.googleusercontent.com/proxy/Z8GFVqGUK4B0_GPFpb3Wyp5x0luF3wneUv3bksBg-NTqH-kNR1MGuG4Jxdznx63zEWomsaJNd6P_fNp5Bw-6_w" width="400"></p>
+<p align="center"><img src="https://myflighty.com/images/logo-111x33.png" width="400"></p>
 
 <p align="center">
 <a href="#"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
