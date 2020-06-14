@@ -15,14 +15,14 @@ class SiteTableSeeder extends Seeder
     {
         $data = [
             [
-                'site_name'        => 'Payroll Management',
+                'site_name'        => 'MyFlighty',
                 'logo'             => '',
                 'login_banar'      => '',
                 'reg_banar'        => '',
                 'phone_number'     => '0000000',
                 'website'          => 'www.Core.com',
                 'email'            => 'Core@app.com',
-                'footer_text'      => 'Pharmacy Management System',
+                'footer_text'      => 'FlightyIT Management',
                 'address'          => 'Road#32, Hamilton Avenue, Singapur',
                 'created_at'       => now(),
             ],
