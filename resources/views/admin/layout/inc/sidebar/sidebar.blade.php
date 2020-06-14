@@ -111,9 +111,28 @@
 
                 {{-- @if(Sentinel::hasAccess('timezone')) --}}
                 <li class="{{ Request::is('Payroll/*')?'active':''}}">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Payroll</span></a>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Customer</span></a>
                     <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
-                        <li><a href="{{url('system-admin/payroll/create')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Payroll</a></li>
+                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Customer</a></li>
+                    </ul>                            
+                </li>
+                <li class="{{ Request::is('Payroll/*')?'active':''}}">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Agent</span></a>
+                    <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Agent</a></li>
+                    </ul>                            
+                </li>
+                <li class="{{ Request::is('Payroll/*')?'active':''}}">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Stock</span></a>
+                    <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Report</a></li>
+                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Balance</a></li>
+                    </ul>                            
+                </li>
+                <li class="{{ Request::is('Payroll/*')?'active':''}}">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Accounts</span></a>
+                    <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New</a></li>
                     </ul>                            
                 </li>
                 {{-- @endif --}}
