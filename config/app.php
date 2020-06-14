@@ -52,10 +52,10 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost/LARAVEL/flightyIT/'),
 
     // 'asset_url' => env('ASSET_URL', null),
-    'asset_url' => 'http://localhost/payroll/public',
+    'asset_url' => 'http://localhost/LARAVEL/flightyIT/public',
 
     /*
     |--------------------------------------------------------------------------
