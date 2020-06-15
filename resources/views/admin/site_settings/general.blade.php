@@ -26,7 +26,7 @@
                     <h4 class="card-title d-inline">{{ __('messages.site_setting') }}</h4>
                     <h6 class="card-subtitle d-inline">{{ __('messages.all_setting_li') }}..</h6>
                 <hr class="hr-borderd">
-                <form class="form-material m-t-40 form" action="{{ url('settings/system-setting/general') }}" method="post" enctype="multipart/form-data">
+                <form class="form-material m-t-40 form" action="{{ url('system-admin/settings/system-setting/general') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     {{-- @method('put') --}}
                     <div class="form-group row {{ $errors->has('site_name') ? ' has-danger' : '' }}">
@@ -48,7 +48,7 @@
                                         <label for="imageUpload"></label>
                                     </div>
                                     <div class="avatar-preview">
-                                        <div id="imagePreview" style="background-image: url({{!empty($siteSetting->logo)?asset(Storage::url($siteSetting->logo)) : url('default.png')}});"></div>
+                                        <div id="imagePreview" style="background-image: url({{!empty($siteSetting->logo)?asset($siteSetting->logo) : url('default.png')}});"></div>
                                     </div>
                                 @include('elements.feedback',['field' => 'logo'])
                             </div>
@@ -63,7 +63,7 @@
                                         <label for="login_image"></label>
                                     </div>
                                     <div class="avatar-preview">
-                                        <div id="login_image_Preview" style="background-image: url({{!empty($siteSetting->login_banar)?asset(Storage::url($siteSetting->login_banar)) : url('default.png')}});"></div>
+                                        <div id="login_image_Preview" style="background-image: url({{!empty($siteSetting->login_banar)?asset($siteSetting->login_banar) : url('default.png')}});"></div>
                                     </div>
                                 </div>
                                 @include('elements.feedback',['field' => 'login_banar'])
@@ -78,7 +78,7 @@
                                         <label for="register_image"></label>
                                     </div>
                                     <div class="avatar-preview">
-                                        <div id="register_image_Preview" style="background-image: url({{!empty($siteSetting->reg_banar)?asset(Storage::url($siteSetting->reg_banar)) : url('default.png')}});"></div>
+                                        <div id="register_image_Preview" style="background-image: url({{!empty($siteSetting->reg_banar)?asset($siteSetting->reg_banar) : url('default.png')}});"></div>
                                     </div>
                                 </div>
                                 @include('elements.feedback',['field' => 'reg_banar'])
@@ -109,7 +109,7 @@
                                             <label for="login_image"></label>
                                         </div>
                                         <div class="avatar-preview">
-                                            <div id="login_image_Preview" style="background-image: url({{!empty($siteSetting->login_banar)?asset(Storage::url($siteSetting->login_banar)) : url('default.png')}});"></div>
+                                            <div id="login_image_Preview" style="background-image: url({{!empty($siteSetting->login_banar)?asset($siteSetting->login_banar)) : url('default.png')}});"></div>
                                         </div>
                                     </div>
                                     @include('elements.feedback',['field' => 'login_banar'])
@@ -126,7 +126,7 @@
                                             <label for="register_image"></label>
                                         </div>
                                         <div class="avatar-preview">
-                                            <div id="register_image_Preview" style="background-image: url({{!empty($siteSetting->reg_banar)?asset(Storage::url($siteSetting->reg_banar)) : url('default.png')}});"></div>
+                                            <div id="register_image_Preview" style="background-image: url({{!empty($siteSetting->reg_banar)?asset($siteSetting->reg_banar)) : url('default.png')}});"></div>
                                         </div>
                                     </div>
                                     @include('elements.feedback',['field' => 'reg_banar'])

@@ -38,11 +38,11 @@
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div>
 
-    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{!empty($siteInfo->login_banar) ? asset(Storage::url($siteInfo->login_banar)) : asset('material/assets/images/background/login-register.jpg')}});">
+    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url({{!empty($siteInfo->login_banar) ? asset($siteInfo->login_banar) : asset('material/assets/images/background/login-register.jpg')}});">
         <div class="login-box card" style="background:#000000db; color:#fff !important;">
           <div class="card-body log-from">
               <form class="form-horizontal login-form" id="loginform" action="{{route('process_login')}}" method="post">
-                <a href="javascript:void(0)" class="text-center db"><img style="width: 200px; height: auto;" src="{{!empty($siteInfo->logo) ? asset(Storage::url($siteInfo->logo)) : asset('logo.png')}}" alt="Home" /></a>
+                <a href="javascript:void(0)" class="text-center db"><img style="width: 200px; height: auto;" src="{{!empty($siteInfo->logo) ? asset($siteInfo->logo) : asset('logo.png')}}" alt="Home" /></a>
                 @csrf
                 @if (session($key ?? 'status'))
                     <div class="alert alert-{{session('class')}} alert-dismissible fade show" role="alert">

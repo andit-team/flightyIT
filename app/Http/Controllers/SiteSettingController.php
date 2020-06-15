@@ -30,25 +30,12 @@ class SiteSettingController extends Controller
     }
 
     public function generalUpdate(Request $request, SiteSetting $siteSetting){
-        // dd($request->all());
-        if (!Sentinel::hasAccess('siteSetting-edit')) { Session::flash('error', 'Permission Denied!'); return redirect()->back();}
-        $logo = $request->old_logo;
-        $login_banar = $request->old_login_banar;
-        $reg_banar = $request->old_reg_banar;
 
-        if ($request->hasFile('logo')) {
-            Storage::delete($request->old_logo);
-            $logo = $request->logo->storeAs('public/siteSettings', 'logo.' . $request->logo->getClientOriginalExtension());
-        }
-        if ($request->hasFile('login_banar')) {
-            Storage::delete($request->old_login_banar);
-            $login_banar = $request->file('login_banar')->storeAs('public/siteSettings', 'login_banar.' . $request->login_banar->getClientOriginalExtension());
-        }
-        if ($request->hasFile('reg_banar')) {
-            Storage::delete($request->old_reg_banar);
-            $reg_banar = $request->file('reg_banar')->storeAs('public/siteSettings', 'reg_banar.' . $request->reg_banar->getClientOriginalExtension());
-            // die($reg_banar);
-        }
+
+        $logo           = Core::fileUpload($request,'logo','old_logo','uploads/siteSettings','site-logo');
+        $login_banar    = Core::fileUpload($request,'login_banar','old_login_banar','uploads/siteSettings','site-login-banar');
+        $reg_banar      = Core::fileUpload($request,'reg_banar','old_reg_banar','uploads/siteSettings','site-reg-banar');
+
         $data = [
             'site_name'      => $request->site_name,
             'logo'           => $logo,
@@ -68,7 +55,7 @@ class SiteSettingController extends Controller
 
         Session::flash('success', 'Setting Updated Succeed!');
         Core::activities("Update", "", "Updated site setting");
-        return redirect('settings/system-setting/general');
+        return redirect('system-admin/settings/system-setting/general');
     }
 
 
@@ -127,7 +114,7 @@ class SiteSettingController extends Controller
 
         Session::flash('success', 'Setting Updated Succeed!');
         Core::activities("Update", "", "Updated site setting");
-        return redirect('settings/system-setting/site');
+        return redirect('system-admin/settings/system-setting/site');
 
     }
 
