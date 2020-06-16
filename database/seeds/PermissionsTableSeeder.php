@@ -52,21 +52,21 @@ class PermissionsTableSeeder extends Seeder
                 ['site info', 'siteSetting-show', 'Can View info of the site'],
                 ['Edit site', 'siteSetting-edit', 'Can edit a site info'],
             ],
-            // 'CMS' => [
-            //     ['Cms Menu', 'cms-management', 'Can get cms menu'],
-            //     ['See all CMS Page', 'index-cms-page', 'Can See all CMS Page'],
-            //     ['Create CMS Page', 'create-cms-page', 'Can Create a new page'],
-            //     ['Delete CMS Page', 'delete-cms-page', 'Can Delete a page'],
-            //     ['Update CMS Page', 'update-cms-page', 'Can update a page'],
-            //     ['See all CMS post', 'index-cms-post', 'Can See all CMS post'],
-            //     ['Create CMS Post', 'create-cms-post', 'Can Create a new post'],
-            //     ['Delete CMS Post', 'delete-cms-post', 'Can Delete a post'],
-            //     ['Update CMS Post', 'update-cms-post', 'Can update a post'],
-            //     ['Cms Menu', 'cms-menu', 'Can access cms Menu'],
-            // ],
-            // 'Utilities' => [
-            //     ['timezone', 'timezone', 'Can access timezone'],
-            // ],
+            'CMS' => [
+                ['Cms Menu', 'cms-management', 'Can get cms menu'],
+                ['See all CMS Page', 'index-cms-page', 'Can See all CMS Page'],
+                ['Create CMS Page', 'create-cms-page', 'Can Create a new page'],
+                ['Delete CMS Page', 'delete-cms-page', 'Can Delete a page'],
+                ['Update CMS Page', 'update-cms-page', 'Can update a page'],
+                ['See all CMS post', 'index-cms-post', 'Can See all CMS post'],
+                ['Create CMS Post', 'create-cms-post', 'Can Create a new post'],
+                ['Delete CMS Post', 'delete-cms-post', 'Can Delete a post'],
+                ['Update CMS Post', 'update-cms-post', 'Can update a post'],
+                ['Cms Menu', 'cms-menu', 'Can access cms Menu'],
+            ],
+            'Utilities' => [
+                ['timezone', 'timezone', 'Can access timezone'],
+            ],
 
             'Payroll' => [
                 ['Payroll Form', 'payroll-create', 'Can create Payroll'],
