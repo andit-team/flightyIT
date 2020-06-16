@@ -25,29 +25,35 @@
             <ul id="sidebarnav">
                 <li><a href="{{url('system-admin/dashboard')}}"><i class="mdi mdi-home"></i><span class="hide-menu">Dashboard</span></a></li>
 
-                @if(Sentinel::hasAccess('cms-management'))
-                    <li class="{{ request()->is('cms/*') ? 'active' : '' }}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('cms/*')?'true':'false'}}"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">CMS</span></a>
-                        <ul aria-expanded="{{ Request::is('cms/*')?'true':'false'}}" class="collapse {{ Request::is('cms/*')?'in':''}}">
-                            @if(Sentinel::hasAccess('index-cms-page'))
-                                <li><a href="{{url('system-admin/cms/')}}" class="{{ request()->is('system-admin/cms') && !Request::is('system-admin/cms/create') && !Request::is('system-admin/cms/menu') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> Pages</a></li>
-                            @endif
-                            @if(Sentinel::hasAccess('create-cms-page'))
-                                <li><a href="{{url('system-admin/cms/create')}}" class="{{ request()->is('system-admin/cms/create') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> New Pages</a></li>
-                            @endif
-                            @if(Sentinel::hasAccess('cms-menu'))
-                                <li><a href="{{url('system-admin/cms/menu')}}" class="{{ request()->is('system-admin/cms/menu') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> Menus</a></li>
-                            @endif
-                        </ul>
+                @if(Sentinel::hasAccess('timezone'))
+                    <li class="{{ Request::is('Payroll/*')?'active':''}}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Customer</span></a>
+                        <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+                            <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Customer</a></li>
+                        </ul>                            
+                    </li>
+                    <li class="{{ Request::is('Payroll/*')?'active':''}}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Agent</span></a>
+                        <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+                            <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Agent</a></li>
+                        </ul>                            
+                    </li>
+                    <li class="{{ Request::is('Payroll/*')?'active':''}}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Stock</span></a>
+                        <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+                            <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Report</a></li>
+                            <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Balance</a></li>
+                        </ul>                            
+                    </li>
+                    <li class="{{ Request::is('Payroll/*')?'active':''}}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Accounts</span></a>
+                        <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+                            <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New</a></li>
+                        </ul>                            
                     </li>
                 @endif
-
-                @if(Sentinel::hasAccess('timezone'))
-                    <li><a href="{{url('system-admin/timezone')}}" class="{{ request()->is('system-admin/timezone') ? 'active' : '' }}"><i class="mdi mdi-camera-timer"></i> Timezone</a></li>
-                @endif
-
                 @if(Sentinel::hasAccess('user-management'))
-                <hr class="hide-menu hr-borderd">
+                    <hr class="hide-menu hr-borderd">
                     <li class="{{ Request::is('users/*')?'active':''}}">
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('users/*')?'true':'false'}}"><i class="mdi mdi-account-settings-variant"></i><span class="hide-menu">User Management</span></a>
                         <ul aria-expanded="{{ Request::is('users/*')?'true':'false'}}" class="collapse {{ Request::is('users/*')?'in':''}}">
@@ -109,35 +115,26 @@
                     </li>
                 @endif
 
-                {{-- @if(Sentinel::hasAccess('timezone')) --}}
-                <li class="{{ Request::is('Payroll/*')?'active':''}}">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Customer</span></a>
-                    <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
-                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Customer</a></li>
-                    </ul>                            
-                </li>
-                <li class="{{ Request::is('Payroll/*')?'active':''}}">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Agent</span></a>
-                    <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
-                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Agent</a></li>
-                    </ul>                            
-                </li>
-                <li class="{{ Request::is('Payroll/*')?'active':''}}">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Stock</span></a>
-                    <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
-                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Report</a></li>
-                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Balance</a></li>
-                    </ul>                            
-                </li>
-                <li class="{{ Request::is('Payroll/*')?'active':''}}">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Accounts</span></a>
-                    <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
-                        <li><a href="#" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New</a></li>
-                    </ul>                            
-                </li>
-                {{-- @endif --}}
+                @if(Sentinel::hasAccess('cms-management'))
+                    <li class="{{ request()->is('cms/*') ? 'active' : '' }}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('cms/*')?'true':'false'}}"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">CMS</span></a>
+                        <ul aria-expanded="{{ Request::is('cms/*')?'true':'false'}}" class="collapse {{ Request::is('cms/*')?'in':''}}">
+                            @if(Sentinel::hasAccess('index-cms-page'))
+                                <li><a href="{{url('system-admin/cms/')}}" class="{{ request()->is('system-admin/cms') && !Request::is('system-admin/cms/create') && !Request::is('system-admin/cms/menu') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> Pages</a></li>
+                            @endif
+                            @if(Sentinel::hasAccess('create-cms-page'))
+                                <li><a href="{{url('system-admin/cms/create')}}" class="{{ request()->is('system-admin/cms/create') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> New Pages</a></li>
+                            @endif
+                            @if(Sentinel::hasAccess('cms-menu'))
+                                <li><a href="{{url('system-admin/cms/menu')}}" class="{{ request()->is('system-admin/cms/menu') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> Menus</a></li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
 
-
+                @if(Sentinel::hasAccess('timezone'))
+                    <li><a href="{{url('system-admin/timezone')}}" class="{{ request()->is('system-admin/timezone') ? 'active' : '' }}"><i class="mdi mdi-camera-timer"></i> Timezone</a></li>
+                @endif
                 @if(Core::isAdmin())
                     <li class="{{ Request::is('settings/*')?'active':''}}">
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('settings/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Settings</span></a>
