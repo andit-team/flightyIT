@@ -25,8 +25,8 @@
             <ul id="sidebarnav">
                 <li><a href="{{url('system-admin/dashboard')}}"><i class="mdi mdi-home"></i><span class="hide-menu">Dashboard</span></a></li>
 
-                {{-- @if(Sentinel::hasAccess('cms-management')) --}}
-                    {{-- <li class="{{ request()->is('cms/*') ? 'active' : '' }}">
+                @if(Sentinel::hasAccess('cms-management'))
+                    <li class="{{ request()->is('cms/*') ? 'active' : '' }}">
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('cms/*')?'true':'false'}}"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">CMS</span></a>
                         <ul aria-expanded="{{ Request::is('cms/*')?'true':'false'}}" class="collapse {{ Request::is('cms/*')?'in':''}}">
                             @if(Sentinel::hasAccess('index-cms-page'))
@@ -39,14 +39,14 @@
                                 <li><a href="{{url('system-admin/cms/menu')}}" class="{{ request()->is('system-admin/cms/menu') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> Menus</a></li>
                             @endif
                         </ul>
-                    </li> --}}
-                {{-- @endif --}}
+                    </li>
+                @endif
 
-                {{-- @if(Sentinel::hasAccess('timezone')) --}}
-                    {{-- <li><a href="{{url('system-admin/timezone')}}" class="{{ request()->is('system-admin/timezone') ? 'active' : '' }}"><i class="mdi mdi-camera-timer"></i> Timezone</a></li> --}}
-                {{-- @endif --}}
+                @if(Sentinel::hasAccess('timezone'))
+                    <li><a href="{{url('system-admin/timezone')}}" class="{{ request()->is('system-admin/timezone') ? 'active' : '' }}"><i class="mdi mdi-camera-timer"></i> Timezone</a></li>
+                @endif
 
-                {{-- @if(Sentinel::hasAccess('user-management'))
+                @if(Sentinel::hasAccess('user-management'))
                 <hr class="hide-menu hr-borderd">
                     <li class="{{ Request::is('users/*')?'active':''}}">
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('users/*')?'true':'false'}}"><i class="mdi mdi-account-settings-variant"></i><span class="hide-menu">User Management</span></a>
@@ -107,7 +107,7 @@
                             @endif
                         </ul>
                     </li>
-                @endif  --}}
+                @endif
 
                 {{-- @if(Sentinel::hasAccess('timezone')) --}}
                 <li class="{{ Request::is('Payroll/*')?'active':''}}">
@@ -143,7 +143,7 @@
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('settings/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Settings</span></a>
                         <ul aria-expanded="{{ (Request::is('settings/siteSetting/*') || Request::is('settings/siteSetting/*'))?'true':'false'}}" class="collapse {{ (Request::is('settings/siteSetting/*') || Request::is('settings/siteSetting/*'))?'in':''}}">
                             <li><a href="{{url('system-admin/settings/system-setting/general')}}" class="{{ request()->is('settings/system-setting/general') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> General Setting</a></li>
-                            {{-- <li><a href="{{url('system-admin/settings/system-setting/site')}}" class="{{ request()->is('settings/system-setting/site') ? 'active' : '' }}"><i class="mdi mdi-wrench"></i> System Setting</a></li> --}}
+                            <li><a href="{{url('system-admin/settings/system-setting/site')}}" class="{{ request()->is('settings/system-setting/site') ? 'active' : '' }}"><i class="mdi mdi-wrench"></i> System Setting</a></li>
                         </ul>                            
                     </li>
 
@@ -154,19 +154,6 @@
                             <li><a href="{{url('system-admin/mailbox')}}" class="{{ request()->is('mailbox/*') ? 'active' : '' }}"><i class="mdi mdi-email-open-outline"></i> Mailbox</a></li>
                         </ul>                           
                     </li>
-                    
-                    {{-- <li class="{{ Request::is('*')?'active':''}}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('settings/*')?'true':'false'}}"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
-                        <ul aria-expanded="{{ Request::is('settings/*')?'true':'false'}}" class="collapse {{ Request::is('settings/*')?'in':''}}">
-                            <li class="{{ (Request::is('settings/emailtemplate/*') || Request::is('settings/mailbox/*'))?'active':''}}">
-                                <a class="has-arrow" href="#" aria-expanded="{{ (Request::is('settings/emailtemplate/*') || Request::is('settings/mailbox/*'))?'true':'false'}}"><i class="mdi mdi-email-variant"></i> Emails</a>
-                                <ul aria-expanded="{{ (Request::is('settings/emailtemplate/*') || Request::is('settings/mailbox/*'))?'true':'false'}}" class="collapse {{ (Request::is('settings/emailtemplate/*') || Request::is('settings/mailbox/*'))?'in':''}}">
-                                    <li><a href="{{url('system-admin/settings/emailtemplate')}}" class="{{ request()->is('settings/emailtemplate/*') ? 'active' : '' }}"><i class="mdi mdi-cards-variant"></i> Email Templates</a></li>
-                                    <li><a href="{{url('system-admin/settings/mailbox')}}" class="{{ request()->is('settings/mailbox/*') ? 'active' : '' }}"><i class="mdi mdi-email-open-outline"></i> Mailbox</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li> --}}
                 @endif
             </ul>
         </nav>
