@@ -13,7 +13,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.agent.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.agent.create');
     }
 
     /**

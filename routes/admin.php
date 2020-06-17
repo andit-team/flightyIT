@@ -29,6 +29,9 @@ Route::get('system-admin/logout', 'HomeController@logout');
     // Route::resource('cms','CmsController'); 
     Route::resource('payroll','PayrollController'); 
 
+    // Agent
+    Route::resource('agent','AgentController'); 
+
      Route::get('dashboard', 'UserController@dashboard')->name('dashboard');
      Route::get('myprofile', 'UserController@myProfile');
      Route::post('myprofile', 'UserController@updateMyProfile')->name('myprofileupdate');
