@@ -1,4 +1,4 @@
-@extends('admin.layout.app',['pageTitle' => 'New Payroll','noFooter' => 'true','sidebarStyle' =>'mini-sidebar'])
+@extends('admin.layout.app',['pageTitle' => 'New Payroll','noFooter' => 'true',])
 @section('content')
 
 @include('elements.alert')
