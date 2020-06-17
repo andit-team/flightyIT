@@ -68,8 +68,11 @@ class PermissionsTableSeeder extends Seeder
                 ['timezone', 'timezone', 'Can access timezone'],
             ],
 
-            'Payroll' => [
-                ['Payroll Form', 'payroll-create', 'Can create Payroll'],
+            'Agent' => [
+                ['Agent Form', 'agent-create', 'Can create Agent'],
+                ['Agent View', 'agent-view', 'Can view Agent'],
+                ['Agent Edit', 'agent-edit', 'Can edit Agent'],
+                ['Agent Delete', 'agent-delete', 'Can delete Agent'],
             ],
         ];
 
