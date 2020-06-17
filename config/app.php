@@ -57,6 +57,8 @@ return [
     // 'asset_url' => env('ASSET_URL', null),
     'asset_url' => 'http://localhost/LARAVEL/flightyIT/public',
 
+    // 'url' => env('APP_URL', 'https://flighty.andit.co/'),
+    // 'asset_url' => 'https://flighty.andit.co/public',
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
