@@ -117,10 +117,6 @@
                         </ul>
                     </li>
                 @endif
-
-                @if(Sentinel::hasAccess('timezone'))
-                    <li><a href="{{url('system-admin/timezone')}}" class="{{ request()->is('system-admin/timezone') ? 'active' : '' }}"><i class="mdi mdi-camera-timer"></i> Timezone</a></li>
-                @endif
                 @if(Core::isAdmin())
                     <li class="{{ Request::is('settings/*')?'active':''}}">
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('settings/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Settings</span></a>
