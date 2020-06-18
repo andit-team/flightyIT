@@ -74,6 +74,13 @@ class PermissionsTableSeeder extends Seeder
                 ['Agent Edit', 'agent-edit', 'Can edit Agent'],
                 ['Agent Delete', 'agent-delete', 'Can delete Agent'],
             ],
+
+            'Agency' => [
+                ['Agency Form', 'agency-create', 'Can create Agency'],
+                ['Agency View', 'agency-view', 'Can view Agency'],
+                ['Agency Edit', 'agency-edit', 'Can edit Agency'],
+                ['Agency Delete', 'agency-delete', 'Can delete Agency'],
+            ],
         ];
 
         $this->savePermission($data);

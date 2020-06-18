@@ -31,6 +31,8 @@ Route::get('system-admin/logout', 'HomeController@logout');
 
     // Agent
     Route::resource('agent','AgentController'); 
+    // Agency
+    Route::resource('agency','AgencyController'); 
 
      Route::get('dashboard', 'UserController@dashboard')->name('dashboard');
      Route::get('myprofile', 'UserController@myProfile');
