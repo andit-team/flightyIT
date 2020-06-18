@@ -42,44 +42,37 @@
                             @include('elements.feedback',['field' => 'mobile'])
                         </div>
                     </div>
-                    {{-- phone, username --}}
+                    {{-- phone, agency --}}
                     <div class="form-group row">
                         <label for="phone" class="col-sm-2 text-right control-label col-form-label">Phone <sup class="text-danger font-bold">*</sup> :</label>
                         <div class="col-sm-4">
                             <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone" placeholder="Phone">
                             @include('elements.feedback',['field' => 'phone'])
                         </div>
-
-                        <label for="username" class="col-sm-2 text-right control-label col-form-label">Username <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="username" value="{{old('username')}}" class="form-control" id="username" placeholder="Login Username">
-                            @include('elements.feedback',['field' => 'username'])
-                        </div>
-                    </div>
-                    {{-- pass, con pass --}}
-                    <div class="form-group row">
-                        <label for="password" class="col-sm-2 text-right control-label col-form-label">Password <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="password" name="password" class="form-control" id="password">
-                            @include('elements.feedback',['field' => 'password'])
-                        </div>
-
-                        <label for="password" class="col-sm-2 text-right control-label col-form-label">Confirm Password <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="password" name="password" class="form-control" id="password">
-                            @include('elements.feedback',['field' => 'password'])
-                        </div>
-                    </div>
-                    {{-- agency, type --}}
-                    <div class="form-group row">
                         <label for="agency" class="col-sm-2 text-right control-label col-form-label">Agency <sup class="text-danger font-bold">*</sup> :</label>
                         <div class="col-sm-4">
                             <input type="text" name="agency" value="{{old('agency')}}" class="form-control" id="agency">
                             @include('elements.feedback',['field' => 'agency'])
                         </div>
-
-                        <label for="type" class="col-sm-2 text-right control-label col-form-label">Type <sup class="text-danger font-bold">*</sup> :</label>
+                    </div>
+                    {{-- username, password --}}
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-2 text-right control-label col-form-label">Username <sup class="text-danger font-bold">*</sup> :</label>
                         <div class="col-sm-4">
+                            <input type="text" name="username" value="{{old('username')}}" class="form-control" id="username" placeholder="Login Username" autocomplete="off">
+                            @include('elements.feedback',['field' => 'username'])
+                        </div>
+
+                        <label for="password" class="col-sm-2 text-right control-label col-form-label">Password <sup class="text-danger font-bold">*</sup> :</label>
+                        <div class="col-sm-4">
+                            <input type="password" name="password" class="form-control" id="password" autocomplete="off">
+                            @include('elements.feedback',['field' => 'password'])
+                        </div>
+                    </div>
+                    {{-- type --}}
+                    <div class="form-group row">
+                        <label for="type" class="col-sm-2 text-right control-label col-form-label">Type <sup class="text-danger font-bold">*</sup> :</label>
+                        <div class="col-sm-10">
                             <select name="type" class="form-control" id="type">
                                 {!!Core::getOptionArray(['agent' => 'Agent','admin' => 'Admin'])!!}
                             </select>
