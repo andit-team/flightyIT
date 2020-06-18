@@ -33,6 +33,8 @@ Route::get('system-admin/logout', 'HomeController@logout');
     Route::resource('agent','AgentController'); 
     // Agency
     Route::resource('agency','AgencyController'); 
+    // Tickets
+    Route::resource('ticket','TicketsController'); 
 
      Route::get('dashboard', 'UserController@dashboard')->name('dashboard');
      Route::get('myprofile', 'UserController@myProfile');

@@ -50,6 +50,20 @@
                         </ul>                            
                     </li>
                 @endif
+                
+                @if(Sentinel::hasAccess('tickets'))
+                    <li class="{{ Request::is('Payroll/*')?'active':''}}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Tickets</span></a>
+                        <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+
+                            <li><a href="{{url('system-admin/ticket/create')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Add Ticket</a></li>
+
+                            <li><a href="{{url('system-admin/ticket/')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Search Ticket</a></li>
+
+                            <li><a href="{{url('system-admin/ticket/')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Stock</a></li>
+                        </ul>                            
+                    </li>
+                @endif
 
                 @if(Sentinel::hasAccess('user-management'))
                     <hr class="hide-menu hr-borderd">
