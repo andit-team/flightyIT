@@ -4,7 +4,7 @@
 @include('elements.alert')
 <div class="row">
     <div class="col-lg-8 col-md-8 m-t-30 mx-auto">
-        <form class="form-material m-t-40 form" action="{{ route('agent.store') }}" method="post" autocomplete="off">
+        <form class="form-material m-t-40" action="{{ route('agent.store') }}" method="post" autocomplete="off" id="">
             @csrf
             {{-- New Card --}}
             <div class="card border-dark">
@@ -32,7 +32,7 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 text-right control-label col-form-label">Email:</label>
                         <div class="col-sm-4">
-                            <input type="text" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="Email of agent">
+                            <input type="text" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="Email of agent" required>
                             @include('elements.feedback',['field' => 'email'])
                         </div>
                         

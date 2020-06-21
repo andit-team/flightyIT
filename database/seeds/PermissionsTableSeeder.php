@@ -69,7 +69,7 @@ class PermissionsTableSeeder extends Seeder
             ],
 
             'Agent' => [
-                ['Agent Form', 'agent-create', 'Can create Agent'],
+                ['Agent Add', 'agent-create', 'Can create Agent'],
                 ['Agent View', 'agent-view', 'Can view Agent'],
                 ['Agent Edit', 'agent-edit', 'Can edit Agent'],
                 ['Agent Delete', 'agent-delete', 'Can delete Agent'],

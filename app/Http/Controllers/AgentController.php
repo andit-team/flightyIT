@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Permission;
+use Cartalyst\Sentinel\Roles\EloquentRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Core;
+use Sentinel;
+use Session;
+use Illuminate\Support\Facades\Storage;
 
 class AgentController extends Controller
 {
@@ -23,6 +31,11 @@ class AgentController extends Controller
      */
     public function create()
     {
+        if (!Sentinel::hasAccess('agent-create')) {
+            Session::flash('error', 'Permission Denied!');
+            return redirect()->back();
+        }
+        $roles = DB::table('roles')->get();
         return view('admin.agent.create');
     }
 
@@ -34,7 +47,12 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!Sentinel::hasAccess('agent-create')) {
+            Session::flash('error', 'Permission Denied!');
+            return redirect()->back();
+        }
+
+        dd('working');
     }
 
     /**
