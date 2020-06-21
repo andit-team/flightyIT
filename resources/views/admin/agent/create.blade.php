@@ -22,7 +22,7 @@
                             @include('elements.feedback',['field' => 'name'])
                         </div>
                         
-                        <label for="surname" class="col-sm-2 text-right control-label col-form-label">Surname <sup class="text-danger font-bold">*</sup> :</label>
+                        <label for="surname" class="col-sm-2 text-right control-label col-form-label">Surname:</label>
                         <div class="col-sm-4">
                             <input type="text" name="surname" value="{{old('surname')}}" class="form-control" id="surname" placeholder="Surname of agent"  autocomplete="off">
                             @include('elements.feedback',['field' => 'surname'])
@@ -30,26 +30,26 @@
                     </div>
                     {{-- email, mobile --}}
                     <div class="form-group row">
-                        <label for="email" class="col-sm-2 text-right control-label col-form-label">Email <sup class="text-danger font-bold">*</sup> :</label>
+                        <label for="email" class="col-sm-2 text-right control-label col-form-label">Email:</label>
                         <div class="col-sm-4">
                             <input type="text" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="Email of agent">
                             @include('elements.feedback',['field' => 'email'])
                         </div>
                         
-                        <label for="mobile" class="col-sm-2 text-right control-label col-form-label">Mobile <sup class="text-danger font-bold">*</sup> :</label>
+                        <label for="mobile" class="col-sm-2 text-right control-label col-form-label">Mobile:</label>
                         <div class="col-sm-4">
-                            <input type="text" name="mobile" value="{{old('mobile')}}" class="form-control" id="surname" placeholder="Mobile of agent">
+                            <input type="text" name="mobile" value="{{old('mobile')}}" class="form-control" id="mobile" placeholder="Mobile of agent">
                             @include('elements.feedback',['field' => 'mobile'])
                         </div>
                     </div>
                     {{-- phone, agency --}}
                     <div class="form-group row">
-                        <label for="phone" class="col-sm-2 text-right control-label col-form-label">Phone <sup class="text-danger font-bold">*</sup> :</label>
+                        <label for="phone" class="col-sm-2 text-right control-label col-form-label">Phone:</label>
                         <div class="col-sm-4">
                             <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone" placeholder="Phone">
                             @include('elements.feedback',['field' => 'phone'])
                         </div>
-                        <label for="agency" class="col-sm-2 text-right control-label col-form-label">Agency <sup class="text-danger font-bold">*</sup> :</label>
+                        <label for="agency" class="col-sm-2 text-right control-label col-form-label">Agency:</label>
                         <div class="col-sm-4">
                             <input type="text" name="agency" value="{{old('agency')}}" class="form-control" id="agency">
                             @include('elements.feedback',['field' => 'agency'])
@@ -60,6 +60,7 @@
                         <label for="username" class="col-sm-2 text-right control-label col-form-label">Username <sup class="text-danger font-bold">*</sup> :</label>
                         <div class="col-sm-4">
                             <input type="text" name="username" value="{{old('username')}}" class="form-control" id="username" placeholder="Login Username" autocomplete="off">
+                            <small id="user-check"></small>
                             @include('elements.feedback',['field' => 'username'])
                         </div>
 
@@ -97,29 +98,20 @@
 
 @push('js')
     <script>
-        $('#house_rent').on('keyup change',function(){
-            $(this).val();
-        });
+        $('#username').on('keyup change',function(){
+            // username input
+            a = $(this).val()
 
-        function getValue(v,input){
-            var s = 0;
-            if(v == input){
-                return parseFloat($(this).val())||0;
-            }else{
-                return parseFloat($('#'+input).val())||0;
+            if(a === ''){
+                $('#user-check').html('')
             }
-            return s;
-        }
-        // function addition(forPress){
-        //     $(this).val();
-        //     // var sum = parseFloat($(this).val())||0;
-        //     // sum += getValue(forPress,'house_rent');
-        //     // sum += getValue(forPress,'medical');
-        //     console.log(forPress);
-        // }
-        // function deduction(){}
-        // function calculate(){
-
-        // }
+            else if(a.length > 1 && a.split(' ').length === 1){
+                $('#user-check').html('user ok')
+                $('#user-check').css({'color': 'green'})
+            }else{
+                $('#user-check').html('Invalid username')
+                $('#user-check').css({'color': 'red'})
+            }
+        });
     </script>
 @endpush
