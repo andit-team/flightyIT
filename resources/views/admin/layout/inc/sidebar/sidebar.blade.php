@@ -128,23 +128,6 @@
                     </li>
                 @endif
 
-                @if(Sentinel::hasAccess('cms-management'))
-                    <li class="{{ request()->is('cms/*') ? 'active' : '' }}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('cms/*')?'true':'false'}}"><i class="mdi mdi-chart-areaspline"></i><span class="hide-menu">CMS</span></a>
-                        <ul aria-expanded="{{ Request::is('cms/*')?'true':'false'}}" class="collapse {{ Request::is('cms/*')?'in':''}}">
-                            @if(Sentinel::hasAccess('index-cms-page'))
-                                <li><a href="{{url('system-admin/cms/')}}" class="{{ request()->is('system-admin/cms') && !Request::is('system-admin/cms/create') && !Request::is('system-admin/cms/menu') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> Pages</a></li>
-                            @endif
-                            @if(Sentinel::hasAccess('create-cms-page'))
-                                <li><a href="{{url('system-admin/cms/create')}}" class="{{ request()->is('system-admin/cms/create') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> New Pages</a></li>
-                            @endif
-                            @if(Sentinel::hasAccess('cms-menu'))
-                                <li><a href="{{url('system-admin/cms/menu')}}" class="{{ request()->is('system-admin/cms/menu') ? 'active' : '' }}"><i class="mdi mdi-content-duplicate"></i> Menus</a></li>
-                            @endif
-                        </ul>
-                    </li>
-                @endif
-
                 @if(Core::isAdmin())
                     <li class="{{ Request::is('settings/*')?'active':''}}">
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('settings/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Settings</span></a>
