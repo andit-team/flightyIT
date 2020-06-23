@@ -15,6 +15,8 @@ class UserTableSeeder extends Seeder
                 'name'          => 'Admin',
                 'first_name'    => 'Admin',
                 'last_name'     => 'AndIt',
+                'phone'         => '01546515444',
+                'agency'         => 'abc',
                 'email'         => 'system@admin.com',
                 'password'      => '123456', //123456
                 'created_at'    => now(),
@@ -24,29 +26,15 @@ class UserTableSeeder extends Seeder
         $role = \Sentinel::findRoleBySlug('admin');
         $role->users()->attach($user->id);
         $users = [
-                'name'          => 'Manager',
-                'first_name'    => 'Project Manager',
-                'last_name'     => 'AndIt',
-                'email'         => 'system@manager.com',
+                'name'          => 'Agent 1',
+                'first_name'    => 'Shariful',
+                'last_name'     => 'Islam',
+                'phone'         => '01546515444',
+                'agency'         => 'abc',
+                'email'         => 'system@agent.com',
                 'password'      => '123456', //123456
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];
-        $user = \Sentinel::registerAndActivate($users);
-        $role = \Sentinel::findRoleBySlug('manager');
-        $role->users()->attach($user->id);
-
-        $users = [
-                'name'          => 'Editor',
-                'first_name'    => 'Editor',
-                'last_name'     => 'AndIt',
-                'email'         => 'system@editor.com',
-                'password'      => '123456', //123456
-                'created_at'    => now(),
-                'updated_at'    => now()
-        ];
-        $user = \Sentinel::registerAndActivate($users);
-        $role = \Sentinel::findRoleBySlug('editor');
-        $role->users()->attach($user->id);
     }
 }

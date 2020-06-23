@@ -28,15 +28,8 @@ class RoleTableSeeder extends Seeder
                 'updated_at'    => now(),
             ],
             [
-                'name'          => 'Manager',
-                'slug'          => 'manager',
-                'permissions'   => '',
-                'created_at'    => now(),
-                'updated_at'    => now(),
-            ],
-            [
-                'name'          => 'Editor',
-                'slug'          => 'editor',
+                'name'          => 'Agent',
+                'slug'          => 'agent',
                 'permissions'   => '',
                 'created_at'    => now(),
                 'updated_at'    => now(),

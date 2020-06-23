@@ -20,7 +20,7 @@ class SiteTableSeeder extends Seeder
                 'login_banar'      => '',
                 'reg_banar'        => '',
                 'phone_number'     => '0000000',
-                'website'          => 'www.Core.com',
+                'website'          => 'www.myflighty.com',
                 'email'            => 'Core@app.com',
                 'footer_text'      => 'FlightyIT Management',
                 'address'          => 'Road#32, Hamilton Avenue, Singapur',
