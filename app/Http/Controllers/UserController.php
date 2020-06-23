@@ -77,6 +77,8 @@ class UserController extends Controller
         $credentials = [
             'email'     => $request->email,
             'password'  => $request->password,
+            'phone'  => $request->phone,
+            'agency'  => $request->agency,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'name'      => $request->first_name . " " . $request->last_name,

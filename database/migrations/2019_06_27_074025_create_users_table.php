@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->text('permissions')->nullable();
+            $table->text('agent')->nullable();
+            $table->text('phone')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
