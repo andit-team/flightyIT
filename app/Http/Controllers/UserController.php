@@ -35,20 +35,10 @@ class UserController extends Controller
     {
         $this->formValidate($request);
         $user = Sentinel::findById(Sentinel::getUser()->id);
-        // $profile_banar = $request->old_profile_banar;
-        // $profile_image = $request->old_profile_image;
+        
         $profile_image = Core::fileUpload($request,'profile_image','old_profile_image','uploads/users',$user->id.'-profile-img');
         $profile_banar =Core::fileUpload($request,'profile_banar','old_profile_banar','uploads/users',$user->id.'-profile-bannar');
 
-        // if ($request->hasFile('profile_image')) {
-        //     $profile_image = $request->profile_image->store('public/profileImage/user');
-        //     Storage::delete($request->old_profile_image);
-        // }
-        // if ($request->hasFile('profile_banar')) {
-        //     $profile_banar = $request->profile_banar->store('public/profileImage/banar');
-        //     Storage::delete($request->old_profile_banar);
-        // }
-        // dd($profile_banar);
         $credentials = [
             'profile_image' => $profile_image,
             'profile_banar' => $profile_banar,

@@ -9,7 +9,8 @@
             {{-- New Card --}}
             <div class="card border-dark">
                 <div class="card-header bg-dark">
-                    <h4 class="mb-0 text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp;New Agent</h4></div>
+                    <h4 class="mb-0 text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp;New Agent</h4>
+                </div>
                 <div class="card-body">
                     <h3 class="card-title">Special title treatment</h3>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
