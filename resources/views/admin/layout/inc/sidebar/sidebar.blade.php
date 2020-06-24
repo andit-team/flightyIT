@@ -26,10 +26,10 @@
                 {{-- Dashboard --}}
                 <li><a href="{{url('system-admin/dashboard')}}"><i class="mdi mdi-home"></i><span class="hide-menu">Dashboard</span></a></li>
                 
-
-                @if(Sentinel::hasAccess('user-management'))
+                {{-- agent --}}
+                @if(Sentinel::hasAccess('agent'))
                     <li class="{{ Request::is('agent/*')?'active':''}}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('agent/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Agents</span></a>
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('agent/*')?'true':'false'}}"><i class="fa fa-user" style="font-size:17px"></i><span class="hide-menu">Agents</span></a>
                         <ul aria-expanded="{{ (Request::is('agent/*') || Request::is('agent/*'))?'true':'false'}}" class="collapse {{ (Request::is('agent/*') || Request::is('agent/*'))?'in':''}}">
 
                             <li><a href="{{url('system-admin/agent/create')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Agent</a></li>
@@ -39,9 +39,25 @@
                     </li>
                 @endif
 
+                {{-- Tickets --}}
+                @if(Sentinel::hasAccess('tickets'))
+                    <li class="{{ Request::is('ticket/*')?'active':''}}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('ticket/*')?'true':'false'}}"><i class="fa fa-ticket" style="font-size:17px"></i><span class="hide-menu">Tickets</span></a>
+                        <ul aria-expanded="{{ (Request::is('ticket/*') || Request::is('ticket/*'))?'true':'false'}}" class="collapse {{ (Request::is('ticket/*') || Request::is('ticket/*'))?'in':''}}">
+
+                            <li><a href="{{url('system-admin/ticket/create')}}" class="{{ request()->is('ticket/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Add Ticket</a></li>
+
+                            <li><a href="{{url('system-admin/ticket/')}}" class="{{ request()->is('ticket/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Search Ticket</a></li>
+
+                            <li><a href="{{url('system-admin/ticket/')}}" class="{{ request()->is('ticket/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Stock</a></li>
+                        </ul>                            
+                    </li>
+                @endif
+
+                {{-- agency / company --}}
                 @if(Sentinel::hasAccess('agency'))
                     <li class="{{ Request::is('Payroll/*')?'active':''}}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Agency</span></a>
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-paper-plane" style="font-size:17px"></i><span class="hide-menu">Agency</span></a>
                         <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
 
                             <li><a href="{{url('system-admin/agency/create')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Agency</a></li>
@@ -51,20 +67,7 @@
                     </li>
                 @endif
                 
-                @if(Sentinel::hasAccess('tickets'))
-                    <li class="{{ Request::is('Payroll/*')?'active':''}}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Tickets</span></a>
-                        <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
-
-                            <li><a href="{{url('system-admin/ticket/create')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Add Ticket</a></li>
-
-                            <li><a href="{{url('system-admin/ticket/')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Search Ticket</a></li>
-
-                            <li><a href="{{url('system-admin/ticket/')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Stock</a></li>
-                        </ul>                            
-                    </li>
-                @endif
-
+            
                 @if(Sentinel::hasAccess('user-management'))
                     <hr class="hide-menu hr-borderd">
                     <li class="{{ Request::is('users/*')?'active':''}}">

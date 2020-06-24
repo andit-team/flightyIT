@@ -1,125 +1,98 @@
-@extends('admin.layout.app',['pageTitle' => 'Ticket','noFooter' => 'true',])
+@extends('admin.layout.app',['pageTitle' => __('Ticket Add')])
 @section('content')
 
+@component('admin.layout.inc.breadcrumb')
+@slot('title')
+{{ __('messages.my_pro_page') }}
+@endslot
+@endcomponent
 @include('elements.alert')
 <div class="row">
-    <div class="col-lg-8 col-md-8 m-t-30 mx-auto">
-        <form class="form-material m-t-40 form" action="{{ route('agent.store') }}" method="post" autocomplete="off">
-            @csrf
-            {{-- New Card --}}
-            <div class="card border-dark">
-                <div class="card-header bg-dark">
-                    <h4 class="mb-0 text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Add Ticket</h4></div>
-                <div class="card-body">
-                    <h3 class="card-title">Special title treatment</h3>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <hr>
-                    {{-- name, surname --}}
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 text-right control-label col-form-label">Name <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" placeholder="Name of agent">
-                            @include('elements.feedback',['field' => 'name'])
-                        </div>
-                        
-                        <label for="surname" class="col-sm-2 text-right control-label col-form-label">Surname <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="surname" value="{{old('surname')}}" class="form-control" id="surname" placeholder="Surname of agent"  autocomplete="off">
-                            @include('elements.feedback',['field' => 'surname'])
-                        </div>
-                    </div>
-                    {{-- email, mobile --}}
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 text-right control-label col-form-label">Email <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="Email of agent">
-                            @include('elements.feedback',['field' => 'email'])
-                        </div>
-                        
-                        <label for="mobile" class="col-sm-2 text-right control-label col-form-label">Mobile <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="mobile" value="{{old('mobile')}}" class="form-control" id="surname" placeholder="Mobile of agent">
-                            @include('elements.feedback',['field' => 'mobile'])
-                        </div>
-                    </div>
-                    {{-- phone, agency --}}
-                    <div class="form-group row">
-                        <label for="phone" class="col-sm-2 text-right control-label col-form-label">Phone <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone" placeholder="Phone">
-                            @include('elements.feedback',['field' => 'phone'])
-                        </div>
-                        <label for="agency" class="col-sm-2 text-right control-label col-form-label">Agency <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="agency" value="{{old('agency')}}" class="form-control" id="agency">
-                            @include('elements.feedback',['field' => 'agency'])
-                        </div>
-                    </div>
-                    {{-- username, password --}}
-                    <div class="form-group row">
-                        <label for="username" class="col-sm-2 text-right control-label col-form-label">Username <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="username" value="{{old('username')}}" class="form-control" id="username" placeholder="Login Username" autocomplete="off">
-                            @include('elements.feedback',['field' => 'username'])
-                        </div>
-
-                        <label for="password" class="col-sm-2 text-right control-label col-form-label">Password <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="password" name="password" class="form-control" id="password" autocomplete="off">
-                            @include('elements.feedback',['field' => 'password'])
-                        </div>
-                    </div>
-                    {{-- type --}}
-                    <div class="form-group row">
-                        <label for="type" class="col-sm-2 text-right control-label col-form-label">Type <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-10">
-                            <select name="type" class="form-control" id="type">
-                                {!!Core::getOptionArray(['agent' => 'Agent','admin' => 'Admin'])!!}
-                            </select>
-                            @include('elements.feedback',['field' => 'type'])
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <div class="card-body">
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-info">Submit</button>
-                                <button type="button" class="btn btn-dark">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-lg-12 col-md-12">
+        <div class="card border-dark">
+            <div class="card-header bg-dark">
+                <h4 class="card-title text-white"><i class="fa fa-ticket"></i>&nbsp;&nbsp;Add Ticket</h4>
+                <h6 class="card-subtitle">New Ticket add Form</h6>
             </div>
-        </form>    
+            <?php $i = 1;?>
+            <div class="card-body">
+                <form class="form-material" action="{{ route('ticket.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="table-responsive" style="margin-top: 10px">
+                        <table class="table table-bordered table-hover purchaseTable" id="purchaseTable">
+                            <thead>
+                                <tr class="themeThead">
+                                    <th class="text-left">First Name<i class="text-white">*</i></th>
+                                    <th class="text-left">Last Name<i class="text-white">*</i></th>
+                                    <th class="text-left">Departure<i class="text-white">*</i></th>
+                                    <th class="text-left">Return<i class="text-white">*</i></th>
+                                    <th class="text-left">From<i class="text-white">*</i></th>
+                                    <th class="text-left">To<i class="text-white">*</i></th>
+                                    <th class="text-left">Airline<i class="text-white">*</i></th>
+                                    <th class="text-left">Mobile<i class="text-white">*</i></th>
+                                    <th class="text-left">Passport<i class="text-white">*</i></th>
+                                    <th class="text-left">Ticket No.<i class="text-white">*</i></th>
+                                    <th class="text-left">Rate<i class="text-white">*</i></th>
+                                    <th class="text-left">Agent<i class="text-white">*</i></th>
+                                    <th class="text-left">Status<i class="text-white">*</i></th>
+                                    <th class="text-right">{{ __('messages.action')}}</th>
+                                </tr>
+                            </thead>
+                            <tbody id="addSalesItem">
+                                    <tr class="firstRow">
+                                        <td>
+                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                        </td>
+                                        <td class="action">
+                                            <span class="btn-sm btn-success btn add-row rowAdd" > <i class="fa fa-plus-square"></i></span>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="submit" name="save" value ="savePrint" class="btn waves-effect waves-light btn-lg btn-themecolor float-right formSave" style="margin-right:75px"> <i class="mdi mdi-printer"></i> {{ __('messages.save_print')}}</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-@include('elements.dataTableOne')
 @endsection
-
 @push('js')
-    <script>
-        $('#house_rent').on('keyup change',function(){
-            $(this).val();
-        });
+<script>
+    // inventories script
+    $('.rowAdd').click(function(){
 
-        function getValue(v,input){
-            var s = 0;
-            if(v == input){
-                return parseFloat($(this).val())||0;
-            }else{
-                return parseFloat($('#'+input).val())||0;
-            }
-            return s;
-        }
-        // function addition(forPress){
-        //     $(this).val();
-        //     // var sum = parseFloat($(this).val())||0;
-        //     // sum += getValue(forPress,'house_rent');
-        //     // sum += getValue(forPress,'medical');
-        //     console.log(forPress);
-        // }
-        // function deduction(){}
-        // function calculate(){
+        var rowNo = parseFloat($(this).data("row"))||1;
+        var getTr = $('tr.firstRow:first');
 
-        // }
-    </script>
+        var a =  $('tr.firstRow:first');
+        a = a.html()
+        a = a.removeChild('.action')
+        
+        console.log(a)
+
+        $('tbody#addSalesItem').append("<tr data-id="+rowNo+" id='row-"+rowNo+"' class='removableRow'>"+getTr.html()+"<td><span class='btn-sm btn-danger rowRemove'> <i class='fa fa-trash-o'></i></span></td></tr>");
+        var defaultRow = $('tr.removableRow:last');
+        $(".rowAdd").data("row",rowNo+1);
+    });
+
+    $(document).on("click", "span.rowRemove ", function () {
+        $(this).closest("tr.removableRow").remove();
+    });
+</script>
 @endpush
