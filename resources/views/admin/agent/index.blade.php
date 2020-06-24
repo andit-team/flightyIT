@@ -1,34 +1,51 @@
 @extends('admin.layout.app',['pageTitle' => __('User Management')])
 @section('content')
 
-{{-- @component('admin.layout.inc.breadcrumb')
+@component('admin.layout.inc.breadcrumb')
 @slot('title')
-{{ __('messages.users') }}
+Agents
 @endslot
-@endcomponent --}}
+@endcomponent
 @include('elements.alert')
 <div class="row">
     <div class="col-lg-12 col-md-12">
-        <div class="card mt-3">
+        <div class="card border-dark">
+            <div class="card-header bg-dark">
+                <h4 class="card-title text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Agents</h4>
+                <h6 class="card-subtitle">All Agents List</h6>
+            </div>
             <div class="card-body">
-                <h4 class="card-title">Agents</h4>
-                <h6 class="card-subtitle">Agent List}</h6>
-                <hr class="hr-borderd">
                 <div class="table-responsive">
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th width="80">Name</th>
-                                <th>Email</th>
-                                <th>Password</th>
-                                <th>Phone</th>
-                                <th width='150'>Type</th>
+                                <th width="80">{{ __('messages.sl') }}</th>
+                                <th>{{ __('messages.name') }}</th>
+                                <th>{{ __('messages.email') }}</th>
+                                <th>{{ __('messages.phone') }}</th>
+                                <th>{{ __('messages.last_login') }}</th>
+                                <th width='150'>{{ __('messages.action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 0;?>
+                            @foreach($agents as $user)
                             <tr>
-                              <td>No Data</td>
+                                <td>{{sprintf("%02s",++$i) }}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->phone}}</td>
+                                <td><?php echo Core::globalDateTime($user->last_login)?></td>
+                                <td style="display: flex; justify-content: space-evenly;">
+                                    <button type="button" class="btn waves-effect waves-light btn-xs btn-info"><i class="fa fa-eye"></i></button>
+                                    <a class="btn waves-effect waves-light text-light btn-xs btn-warning" href="{{url('system-admin/users/'.$user->id.'/edit')}}"><i class="fa fa-edit"></i></a>
+                                    <form action="{{url('system-admin/users/'.$user->id.'/delete')}}" method="post" style="margin-top:-2px" id="deleteButton{{$user->id}}">
+                                        @csrf
+                                        <button type="submit" class="btn waves-effect waves-light btn-xs btn-danger" onclick="sweetalertDelete({{$user->id}})"><i class="fa fa-trash-o"></i></button>
+                                    </form>
+                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -48,6 +65,52 @@
 <script src="{{ asset('js') }}/buttons.html5.min.js"></script>
 <script src="{{ asset('js') }}/buttons.print.min.js"></script>
 
-
+<script>
+    $(document).ready(function() {
+                $('#myTable').DataTable();
+                $(document).ready(function() {
+                    var table = $('#example').DataTable({
+                        "columnDefs": [{
+                            "visible": false,
+                            "targets": 2
+                        }],
+                        "order": [
+                            [2, 'asc']
+                        ],
+                        "displayLength": 25,
+                        "drawCallback": function(settings) {
+                            var api = this.api();
+                            var rows = api.rows({
+                                page: 'current'
+                            }).nodes();
+                            var last = null;
+                            api.column(2, {
+                                page: 'current'
+                            }).data().each(function(group, i) {
+                                if (last !== group) {
+                                    $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                    last = group;
+                                }
+                            });
+                        }
+                    });
+                    // Order by the grouping
+                    $('#example tbody').on('click', 'tr.group', function() {
+                        var currentOrder = table.order()[0];
+                        if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                            table.order([2, 'desc']).draw();
+                        } else {
+                            table.order([2, 'asc']).draw();
+                        }
+                    });
+                });
+            });
+            $('#example23').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+</script>
 @endpush
 @endsection

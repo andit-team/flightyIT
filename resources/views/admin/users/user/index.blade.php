@@ -9,11 +9,12 @@
 @include('elements.alert')
 <div class="row">
     <div class="col-lg-12 col-md-12">
-        <div class="card">
+        <div class="card border-dark">
+            <div class="card-header bg-dark">
+                <h4 class="card-title text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp;{{ __('messages.user') }}</h4>
+                <h6 class="card-subtitle">{{ __('messages.user_list') }}</h6>
+            </div>
             <div class="card-body">
-                <h4 class="card-title">{{ __('messages.user') }}</h4>
-                <h6 class="card-subtitle">{{__('messages.user_list')}}</h6>
-                <hr class="hr-borderd">
                 <div class="table-responsive">
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
@@ -21,6 +22,7 @@
                                 <th width="80">{{ __('messages.sl') }}</th>
                                 <th>{{ __('messages.name') }}</th>
                                 <th>{{ __('messages.email') }}</th>
+                                <th>{{ __('messages.phone') }}</th>
                                 <th>{{ __('messages.last_login') }}</th>
                                 <th width='150'>{{ __('messages.action') }}</th>
                             </tr>
@@ -32,6 +34,7 @@
                                 <td>{{sprintf("%02s",++$i) }}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
+                                <td>{{$user->phone}}</td>
                                 <td><?php echo Core::globalDateTime($user->last_login)?></td>
                                 <td style="display: flex; justify-content: space-evenly;">
                                     <button type="button" class="btn waves-effect waves-light btn-xs btn-info"><i class="fa fa-eye"></i></button>

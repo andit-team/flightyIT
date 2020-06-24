@@ -27,14 +27,14 @@
                 <li><a href="{{url('system-admin/dashboard')}}"><i class="mdi mdi-home"></i><span class="hide-menu">Dashboard</span></a></li>
                 
 
-                @if(Sentinel::hasAccess('agent'))
-                    <li class="{{ Request::is('Payroll/*')?'active':''}}">
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('payroll/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Agents</span></a>
-                        <ul aria-expanded="{{ (Request::is('payroll/*') || Request::is('payroll/*'))?'true':'false'}}" class="collapse {{ (Request::is('payroll/*') || Request::is('payroll/*'))?'in':''}}">
+                @if(Sentinel::hasAccess('user-management'))
+                    <li class="{{ Request::is('agent/*')?'active':''}}">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="{{ Request::is('agent/*')?'true':'false'}}"><i class="fa fa-cogs" style="font-size:17px"></i><span class="hide-menu">Agents</span></a>
+                        <ul aria-expanded="{{ (Request::is('agent/*') || Request::is('agent/*'))?'true':'false'}}" class="collapse {{ (Request::is('agent/*') || Request::is('agent/*'))?'in':''}}">
 
                             <li><a href="{{url('system-admin/agent/create')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> New Agent</a></li>
 
-                            <li><a href="{{url('system-admin/agent/')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Manage Agents</a></li>
+                            <li><a href="{{url('system-admin/agent')}}" class="{{ request()->is('payroll/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Manage Agents</a></li>
                         </ul>                            
                     </li>
                 @endif

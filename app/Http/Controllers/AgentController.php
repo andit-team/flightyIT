@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Cartalyst\Sentinel\Users\EloquentUser;
 use App\Permission;
 use Cartalyst\Sentinel\Roles\EloquentRole;
 use Illuminate\Http\Request;
@@ -21,7 +22,10 @@ class AgentController extends Controller
      */
     public function index()
     {
-        return view('admin.agent.index');
+        $agents = Sentinel::findRoleBySlug('agent'); 
+        $agents = $agents->users()->get();
+
+        return view('admin.agent.index',compact('agents'));
     }
 
     /**
@@ -36,7 +40,7 @@ class AgentController extends Controller
             return redirect()->back();
         }
         $roles = DB::table('roles')->get();
-        return view('admin.agent.create');
+        return view('admin.agent.create',compact('roles'));
     }
 
     /**

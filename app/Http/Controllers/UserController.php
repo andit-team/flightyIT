@@ -56,6 +56,7 @@ class UserController extends Controller
         return redirect('system-admin/myprofile');
     }
 
+    // New User Form
     public function userCreate()
     {
         if (!Sentinel::hasAccess('user-add')) {
@@ -66,6 +67,7 @@ class UserController extends Controller
         return view('admin.users.user.create', compact('roles'));
     }
 
+    // Post a new User
     public function userStore(Request $request)
     {
         if (!Sentinel::hasAccess('user-add')) {
@@ -88,9 +90,10 @@ class UserController extends Controller
         $role->users()->attach($user->id);
         Session::flash('success', 'User registration Succeed!');
         Core::activities("Store", "Users", "Store a user");
-        return redirect('system-admin/users');
+        return redirect()->back();
     }
 
+    // All user
     public function index()
     {
         if (!Sentinel::hasAccess('user-index')) {

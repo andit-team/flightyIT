@@ -30,7 +30,7 @@ Route::get('system-admin/logout', 'HomeController@logout');
     Route::resource('payroll','PayrollController'); 
 
     // Agent
-    Route::resource('agent','AgentController'); 
+    Route::resource('agent', 'AgentController'); 
     // Agency
     Route::resource('agency','AgencyController'); 
     // Tickets

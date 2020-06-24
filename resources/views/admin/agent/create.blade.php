@@ -1,118 +1,89 @@
-@extends('admin.layout.app',['pageTitle' => 'New Payroll','noFooter' => 'true',])
+@extends('admin.layout.app',['pageTitle' => __('User Management')])
 @section('content')
 
+@component('admin.layout.inc.breadcrumb')
+@slot('title')
+{{ __('messages.my_pro_page') }}
+@endslot
+@endcomponent
 @include('elements.alert')
 <div class="row">
-    <div class="col-lg-8 col-md-8 m-t-30 mx-auto">
-        <form class="form-material m-t-40" action="{{ route('agent.store') }}" method="post" autocomplete="off" id="">
-            @csrf
-            {{-- New Card --}}
-            <div class="card border-dark">
-                <div class="card-header bg-dark">
-                    <h4 class="mb-0 text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp;New Agent</h4>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Special title treatment</h3>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <hr>
-                    {{-- name, surname --}}
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 text-right control-label col-form-label">Name <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" placeholder="Name of agent">
-                            @include('elements.feedback',['field' => 'name'])
-                        </div>
-                        
-                        <label for="surname" class="col-sm-2 text-right control-label col-form-label">Surname:</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="surname" value="{{old('surname')}}" class="form-control" id="surname" placeholder="Surname of agent"  autocomplete="off">
-                            @include('elements.feedback',['field' => 'surname'])
+    <div class="col-lg-12 col-md-12">
+        <div class="card border-dark">
+            <div class="card-header bg-dark">
+                <h4 class="card-title text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Add Agent</h4>
+                <h6 class="card-subtitle">New Agent Registration Form</h6>
+            </div>
+            <div class="card-body">
+                
+                <form class="form-material m-t-40 form" action="{{url('system-admin/users/store')}}" method="post">
+                    @csrf
+
+                    <div class="form-group row {{ $errors->has('first_name') ? ' has-danger' : '' }}">
+                        <label for="first_name" class="col-sm-2 text-right control-label col-form-label">{{ __('messages.first_name') }}<sup class="text-danger font-bold">*</sup> :</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="first_name" value="{{old('first_name')}}" class="form-control" id="first_name" placeholder="First Name" required autocomplete="off">
+                            @include('elements.feedback',['field' => 'first_name'])
                         </div>
                     </div>
-                    {{-- email, mobile --}}
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 text-right control-label col-form-label">Email:</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="Email of agent" required>
-                            @include('elements.feedback',['field' => 'email'])
-                        </div>
-                        
-                        <label for="mobile" class="col-sm-2 text-right control-label col-form-label">Mobile:</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="mobile" value="{{old('mobile')}}" class="form-control" id="mobile" placeholder="Mobile of agent">
-                            @include('elements.feedback',['field' => 'mobile'])
+
+                    <div class="form-group row {{ $errors->has('last_name') ? ' has-danger' : '' }}">
+                        <label for="last_name" class="col-sm-2 text-right control-label col-form-label">{{ __('messages.last_name') }}<sup class="text-danger font-bold">*</sup> :</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="last_name" value="{{old('last_name')}}" class="form-control" id="last_name" placeholder="Last Name" required autocomplete="off">
+                            @include('elements.feedback',['field' => 'last_name'])
                         </div>
                     </div>
-                    {{-- phone, agency --}}
+                    {{-- phone --}}
                     <div class="form-group row">
                         <label for="phone" class="col-sm-2 text-right control-label col-form-label">Phone:</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-10">
                             <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone" placeholder="Phone">
                             @include('elements.feedback',['field' => 'phone'])
                         </div>
+                    </div>
+                    {{-- agency --}}
+                    <div class="form-group row">
                         <label for="agency" class="col-sm-2 text-right control-label col-form-label">Agency:</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-10">
                             <input type="text" name="agency" value="{{old('agency')}}" class="form-control" id="agency">
                             @include('elements.feedback',['field' => 'agency'])
                         </div>
                     </div>
-                    {{-- username, password --}}
-                    <div class="form-group row">
-                        <label for="username" class="col-sm-2 text-right control-label col-form-label">Username <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="username" value="{{old('username')}}" class="form-control" id="username" placeholder="Login Username" autocomplete="off">
-                            <small id="user-check"></small>
-                            @include('elements.feedback',['field' => 'username'])
-                        </div>
 
-                        <label for="password" class="col-sm-2 text-right control-label col-form-label">Password <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="password" name="password" class="form-control" id="password" autocomplete="off">
+                    <div class="form-group row {{ $errors->has('role') ? ' has-danger' : '' }}">
+                        <label for="role" class="col-sm-2 text-right control-label col-form-label">{{ __('messages.role') }}<sup class="text-danger font-bold">*</sup> :</label>
+                        <div class="col-sm-10">
+                            <select class="form-control col-12" id="role" name="role" required>
+                                <?php echo Core::roleOptions($roles,'client')?>
+                            </select>
+                            @include('elements.feedback',['field' => 'role'])
+                        </div>
+                    </div>
+
+                    <div class="form-group row {{ $errors->has('email') ? ' has-danger' : '' }}">
+                        <label for="email" class="col-sm-2 text-right control-label col-form-label">{{ __('messages.email') }}<sup class="text-danger font-bold">*</sup> :</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="{{old('email')}}" required autocomplete="off">
+                            @include('elements.feedback',['field' => 'email'])
+                        </div>
+                    </div>
+
+                    <div class="form-group row {{ $errors->has('password') ? ' has-danger' : '' }}">
+                        <label for="password" class="col-sm-2 text-right control-label col-form-label">{{ __('messages.password') }}<sup class="text-danger font-bold">*</sup> :</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required autocomplete="off">
+                            {{-- <small class="form-text text-muted">Login detils will be send on user email.</small> --}}
                             @include('elements.feedback',['field' => 'password'])
                         </div>
                     </div>
-                    {{-- type --}}
-                    <div class="form-group row">
-                        <label for="type" class="col-sm-2 text-right control-label col-form-label">Type <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-10">
-                            <select name="type" class="form-control" id="type">
-                                {!!Core::getOptionArray(['agent' => 'Agent','admin' => 'Admin'])!!}
-                            </select>
-                            @include('elements.feedback',['field' => 'type'])
-                        </div>
+
+                    <div class="form-group m-b-0">
+                        <button type="submit" class="btn btn-themecolor waves-effect float-right waves-light m-t-10">{{ __('messages.save') }}</button>
                     </div>
-                    <div class="form-actions">
-                        <div class="card-body">
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-info">Submit</button>
-                                <button type="button" class="btn btn-dark">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
-        </form>    
+        </div>
     </div>
 </div>
-@include('elements.dataTableOne')
 @endsection
-
-@push('js')
-    <script>
-        $('#username').on('keyup change',function(){
-            // username input
-            a = $(this).val()
-
-            if(a === ''){
-                $('#user-check').html('')
-            }
-            else if(a.length > 1 && a.split(' ').length === 1){
-                $('#user-check').html('user ok')
-                $('#user-check').css({'color': 'green'})
-            }else{
-                $('#user-check').html('Invalid username')
-                $('#user-check').css({'color': 'red'})
-            }
-        });
-    </script>
-@endpush
