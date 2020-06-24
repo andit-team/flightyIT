@@ -1,4 +1,4 @@
-@extends('admin.layout.app',['pageTitle' => __('User Management')])
+@extends('admin.layout.app',['pageTitle' => __('Agent Management')])
 @section('content')
 
 @component('admin.layout.inc.breadcrumb')
