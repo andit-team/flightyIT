@@ -2,7 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Cartalyst\Sentinel\Users\EloquentUser;
+use App\Permission;
+use Cartalyst\Sentinel\Roles\EloquentRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Core;
+use Sentinel;
+use Session;
+use Illuminate\Support\Facades\Storage;
 
 class TicketsController extends Controller
 {
@@ -23,7 +32,17 @@ class TicketsController extends Controller
      */
     public function create()
     {
-        return view('admin.ticket.create');
+        // Check Permission
+        $this->check('ticket-creat');
+
+        $admin = Sentinel::inRole('admin');
+        if($admin){
+            $agents = Sentinel::findRoleBySlug('agent'); 
+            $agents = $agents->users()->get();
+        }else{
+
+        }
+        return view('admin.ticket.create',compact('agents'));
     }
 
     /**
@@ -34,7 +53,11 @@ class TicketsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Check Permission
+        $this->check('ticket-store');
+        
+        echo '123';
+
     }
 
     /**
@@ -80,5 +103,13 @@ class TicketsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function check($txt){
+        if (!Sentinel::hasAccess($txt)) {
+            Session::flash('warning', 'Permission Denied!');
+            return redirect()->back();
+        }
     }
 }

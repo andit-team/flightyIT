@@ -3,7 +3,7 @@
 
 @component('admin.layout.inc.breadcrumb')
 @slot('title')
-{{ __('messages.my_pro_page') }}
+Add New Ticket
 @endslot
 @endcomponent
 @include('elements.alert')
@@ -34,29 +34,51 @@
                                     <th class="text-left">Ticket No.<i class="text-white">*</i></th>
                                     <th class="text-left">Rate<i class="text-white">*</i></th>
                                     <th class="text-left">Agent<i class="text-white">*</i></th>
-                                    <th class="text-left">Status<i class="text-white">*</i></th>
                                     <th class="text-right">{{ __('messages.action')}}</th>
                                 </tr>
                             </thead>
                             <tbody id="addSalesItem">
                                     <tr class="firstRow">
                                         <td>
-                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                            <input type="text"  name="first_name[]"   class="form-control" placeholder="first Name" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                            <input type="text"  name="last_name[]"   class="form-control" placeholder="lirst Name" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                            <input type="text"  name="departure[]"   class="form-control datepicker" value="{{date('d-m-Y')}}" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                            <input type="text"  name="return[]"   class="form-control datepicker" value="{{date('d-m-Y')}}"  required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                            <input type="text"  name="from[]"   class="form-control" placeholder="from" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="first_name[]"  tabindex="-1" class="form-control mdate" placeholder="First Name" required autocomplete="off">
+                                            <input type="text"  name="to[]"   class="form-control" placeholder="to" required >
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="airline[]"   class="form-control" placeholder="airline" required >
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="mobile[]"   class="form-control" placeholder="mobile" required >
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="passport[]"   class="form-control" placeholder="passport number" required >
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="ticket_no[]"   class="form-control" placeholder="Ticket No." required >
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="rate[]"   class="form-control" placeholder="rate" required >
+                                        </td>
+                                        <td>
+                                            <select class="form-control js-example-basic-single" tabindex="-1" name="agent[]"  required>
+                                                <option value="" selected>--Select One--</option>
+                                                @foreach ($agents as $agent)
+                                                    <option value="{{  $agent->name }}">{{ $agent->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </td>
                                         <td class="action">
                                             <span class="btn-sm btn-success btn add-row rowAdd" > <i class="fa fa-plus-square"></i></span>
@@ -80,15 +102,17 @@
         var rowNo = parseFloat($(this).data("row"))||1;
         var getTr = $('tr.firstRow:first');
 
-        var a =  $('tr.firstRow:first');
-        a = a.html()
-        a = a.removeChild('.action')
-        
-        console.log(a)
-
         $('tbody#addSalesItem').append("<tr data-id="+rowNo+" id='row-"+rowNo+"' class='removableRow'>"+getTr.html()+"<td><span class='btn-sm btn-danger rowRemove'> <i class='fa fa-trash-o'></i></span></td></tr>");
         var defaultRow = $('tr.removableRow:last');
         $(".rowAdd").data("row",rowNo+1);
+        $('#row-'+rowNo+' > td.action ').css({'display':'none'});
+
+        $('.datepicker').datepicker({
+            startDate: '-0d',
+            format:"dd-mm-yyyy",
+            autoclose: true,
+            todayHighlight: true,
+        });
     });
 
     $(document).on("click", "span.rowRemove ", function () {
