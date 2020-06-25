@@ -8,8 +8,8 @@ class Ticket extends Model
 {
     protected $fillable = ['fname', 'lname', 'from', 'to', 'departure', 'return', 'ticket_no', 'rate', 'agent'. 'airline', 'mobile'];
 
-    public function agents(){
-        return $this->belongsTo(Agents::class,'agent');
+    public function user(){
+        return $this->belongsTo(App\User::class,'agent');
     }
 
 }

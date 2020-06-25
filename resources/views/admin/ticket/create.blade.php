@@ -73,12 +73,17 @@ Add New Ticket
                                             <input type="text"  name="rate[]"   class="form-control" placeholder="rate" required >
                                         </td>
                                         <td>
+                                        @if(Sentinel::inRole('admin'))
                                             <select class="form-control js-example-basic-single" tabindex="-1" name="agent[]"  required>
                                                 <option value="" selected>--Select One--</option>
                                                 @foreach ($agents as $agent)
-                                                    <option value="{{  $agent->name }}">{{ $agent->name}}</option>
+                                                    <option value="{{  $agent->id }}">{{ $agent->name}}</option>
                                                 @endforeach
                                             </select>
+                                        @else
+                                            <input type="text" readonly class="form-control" value="{{ Sentinel::getUser()->name }}">
+                                        @endif
+
                                         </td>
                                         <td class="action">
                                             <span class="btn-sm btn-success btn add-row rowAdd" > <i class="fa fa-plus-square"></i></span>

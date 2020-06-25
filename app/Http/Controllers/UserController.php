@@ -23,6 +23,10 @@ class UserController extends Controller
         if(Sentinel::getUser()->inRole('admin')){
             return view('admin.dashboard');
         }
+
+        if(Sentinel::getUser()->inRole('agent')){
+            return view('admin.agent.dashboard');
+        }
     }
 
     public function myProfile()

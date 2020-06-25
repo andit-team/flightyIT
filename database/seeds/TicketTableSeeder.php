@@ -17,7 +17,7 @@ class TicketTableSeeder extends Seeder
             [
                 'fname'        => 'Shovon',
                 'lname'             => 'Das',
-                'departue'      => '01-01-2021',
+                'departure'      => '01-01-2021',
                 'return'        => '26-08-2021',
                 'from'     => 'Dhaks',
                 'to'          => 'Manila',
@@ -37,7 +37,7 @@ class TicketTableSeeder extends Seeder
             [
                 'fname'        => 'Asmit',
                 'lname'             => 'Joy',
-                'departue'      => '01-01-2022',
+                'departure'      => '01-01-2022',
                 'return'        => '26-08-2022',
                 'from'     => 'Dhaks',
                 'to'          => 'Manila',

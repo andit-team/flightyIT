@@ -24,12 +24,12 @@ class CreateTicketsTable extends Migration
             $table->string('airline');
             $table->string('mobile')->nullable();
             $table->string('passport');
-            $table->integer('ticket_no');
+            $table->string('ticket_no');
             $table->double('rate');
-            $table->integer('agent');
+            $table->unsignedBigInteger('agent');
             $table->enum('status', ['Paid', 'Unpaid', 'Canceled'])->default('Unpaid');
             $table->timestamps();
-            $table->foreign('id')->references('agent')->on('agents')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('agent')->references('id')->on('agents')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -5,6 +5,7 @@ namespace App;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use App\Notification;
 use App\Unit;
+use App\Ticket;
 use App\Models\Diagnostic\Bill;
 
 class User extends EloquentUser
@@ -26,5 +27,9 @@ class User extends EloquentUser
     public function bill()
     {
         return $this->hasOne(Bill::class);
+    }
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class,'agent');
     }
 }

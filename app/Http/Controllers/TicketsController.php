@@ -33,15 +33,9 @@ class TicketsController extends Controller
     public function create()
     {
         // Check Permission
-        $this->check('ticket-creat');
-
-        $admin = Sentinel::inRole('admin');
-        if($admin){
+        $this->check('ticket-create');
             $agents = Sentinel::findRoleBySlug('agent'); 
             $agents = $agents->users()->get();
-        }else{
-
-        }
         return view('admin.ticket.create',compact('agents'));
     }
 
