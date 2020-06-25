@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         DB::table('site_settings')->truncate();
         DB::table('currencies')->truncate();
         DB::table('cms')->truncate();
+        DB::table('tickets')->truncate();
 
         $this->call([
             PermissionsTableSeeder::class,
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
             SiteTableSeeder::class,
             CurrencyTableSeeder::class,
             CmsTableDataSeeder::class,
+            TicketTableSeeder::class,
         ]);
     }
 }
