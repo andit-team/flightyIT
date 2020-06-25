@@ -29,7 +29,7 @@ class CreateTicketsTable extends Migration
             $table->integer('agent');
             $table->enum('status', ['Paid', 'Unpaid', 'Canceled'])->default('Unpaid');
             $table->timestamps();
-            $table->foreign('agent')->references('id')->on('agents')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id')->references('agent')->on('agents')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
