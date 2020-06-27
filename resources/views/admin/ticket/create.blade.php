@@ -81,7 +81,7 @@ Add New Ticket
                                                 @endforeach
                                             </select>
                                         @else
-                                            <input type="text" readonly class="form-control" value="{{ Sentinel::getUser()->name }}">
+                                            <input type="text" readonly class="form-control" value="{{ Sentinel::getUser()->first_name }}" disabled>
                                         @endif
 
                                         </td>
