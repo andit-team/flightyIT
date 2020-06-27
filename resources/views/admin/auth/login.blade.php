@@ -78,13 +78,13 @@
                 </div>
                 <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                        <button class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+                        <button class="btn btn-success btn-lg btn-block text-uppercase waves-effect waves-light logIn" type="submit">Log In</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
                         <span class="btn btn-success" id="admin">Admin</span>
-                        <span class="btn btn-primary btn-info" id="diagno">Agent</span>
+                        <span class="btn btn-primary btn-info" id="agent">Agent</span>
                     </div>
                 </div>
             </form>
@@ -126,25 +126,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#seller').click(function(){
-                $('#email').val('seller@andit.com');
-                $('#password').val('123456');
-            });
             $('#admin').click(function(){
-                $('#email').val('admin@andit.com');
+                $('#email').val('system@admin.com');
                 $('#password').val('123456');
+                $('.logIn').click();
             });
-            $('#manager').click(function(){
-                $('#email').val('manager@andit.com');
+            $('#agent').click(function(){
+                $('#email').val('shoriful@agent.com');
                 $('#password').val('123456');
-            });
-            $('#diagno').click(function(){
-                $('#email').val('diagnostic@andit.com');
-                $('#password').val('123456');
-            });
-            $('#Core').click(function(){
-                $('#email').val('Core@andit.com');
-                $('#password').val('123456');
+                $('.logIn').click();
             });
             $(".login-form").validate({
                 rules: {
