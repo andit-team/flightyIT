@@ -48,8 +48,6 @@
                             <li><a href="{{url('system-admin/ticket/create')}}" class="{{ request()->is('ticket/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Add Ticket</a></li>
 
                             <li><a href="{{url('system-admin/ticket/')}}" class="{{ request()->is('ticket/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Search Ticket</a></li>
-
-                            <li><a href="{{url('system-admin/ticket/')}}" class="{{ request()->is('ticket/system-setting/create') ? 'active' : '' }}"><i class="mdi mdi-settings-box"></i> Stock</a></li>
                         </ul>                            
                     </li>
                 @endif
