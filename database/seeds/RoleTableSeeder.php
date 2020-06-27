@@ -30,7 +30,7 @@ class RoleTableSeeder extends Seeder
             [
                 'name'          => 'Agent',
                 'slug'          => 'agent',
-                'permissions'   => '',
+                'permissions'   => '{"agency":true,"agency-create":true,"agency-view":true,"agency-delete":true,"agency-edit":true,"agent":true,"agent-create":true,"agent-view":true,"agent-delete":true,"agent-edit":true,"tickets":true,"ticket-create":true,"ticket-view":true,"ticket-delete":true,"ticket-edit":true}',
                 'created_at'    => now(),
                 'updated_at'    => now(),
             ]
