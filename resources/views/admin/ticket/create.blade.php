@@ -70,7 +70,7 @@ Add New Ticket
                                             <input type="text"  name="ticket_no[]"   class="form-control" placeholder="Ticket No." required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="rate[]"   class="form-control" placeholder="rate" required >
+                                            <input type="number"  name="rate[]"   class="form-control" placeholder="rate" required >
                                         </td>
                                         <td>
                                         @if(Sentinel::inRole('admin'))

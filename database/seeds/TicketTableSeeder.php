@@ -43,6 +43,7 @@ class TicketTableSeeder extends Seeder
                 'to'          => 'Manila',
                 'airline'            => 'USBangla',
                 'mobile'      => '0415201542141',
+                
                 'passport'          => '465ASDA441AS',
                 'ticket_no'          => '546746131574',
                 'rate'          => '2200',
