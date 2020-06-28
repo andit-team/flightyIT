@@ -11,10 +11,32 @@ Search Ticket
     <div class="col-lg-12 col-md-12">
         <div class="card border-dark">
             <div class="card-header bg-dark">
-                <h4 class="card-title text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp; All Tickets</h4>
-                <h6 class="card-subtitle">View all Tickets</h6>
+                <h4 class="card-title text-white"><i class="fa fa-search"></i>&nbsp;&nbsp; Search Tickets</h4>
+                <h6 class="card-subtitle"> Search from all Tickets</h6>
             </div>
             <div class="card-body">
+                {{-- Search --}}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-lg-12">
+                            <form action="" method="get" class="form-inline float-right search">
+                                <div class="form-group">
+                                    <label for="text">{{ __('messages.date_from') }}</label>
+                                    <input type="text" name="start" value="{{date('Y-m-d')}}" class="form-control datepickerDB">
+                                </div>
+                                <div class="form-group">
+                                    <label for="text">{{ __('messages.date_to') }}</label>
+                                    <input type="text" name="end" value="{{ date('Y-m-d')}}" class="form-control datepickerDB">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn search-btn"><i class="fa fa-search"></i></button>
+                                    <a class="btn search-btn-reset" href="{{url('reports/income-statement')}}"><i class="fa fa-refresh"></i></a>
+                                    <button type="button" class="btn btn-success ml-3" style="padding: 10px 15px; border-radius:0px" onclick="invoiceprint()"> <i class="mdi mdi-printer"> </i> {{ __('messages.print') }} </button>
+                                </div>
+                            </form>
+                        </div> 
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>

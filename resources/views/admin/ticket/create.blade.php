@@ -81,7 +81,9 @@ Add New Ticket
                                                 @endforeach
                                             </select>
                                         @else
-                                            <input type="text" readonly class="form-control" value="{{ Sentinel::getUser()->first_name }}" disabled>
+                                            <select class="form-control js-example-basic-single" tabindex="-1" name="agent[]"  required>
+                                                    <option selected value="{{ Sentinel::getUser()->id }}">{{ Sentinel::getUser()->first_name }}</option>
+                                            </select>
                                         @endif
 
                                         </td>

@@ -26,7 +26,7 @@ class TicketsController extends Controller
 
         // Check Permission
         $this->check('ticket-view');
-
+        
         $tickets = Ticket::orderBy('id', 'DESC')->get();
         return view('admin.ticket.index', compact('tickets'));
     }

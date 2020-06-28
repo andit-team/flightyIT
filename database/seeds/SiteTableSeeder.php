@@ -15,7 +15,7 @@ class SiteTableSeeder extends Seeder
     {
         $data = [
             [
-                'site_name'        => 'MyFlighty',
+                'site_name'        => 'Flighty',
                 'logo'             => '',
                 'login_banar'      => '',
                 'reg_banar'        => '',

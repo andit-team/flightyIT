@@ -83,8 +83,8 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                        <span class="btn btn-success" id="admin">Admin</span>
-                        <span class="btn btn-primary btn-info" id="agent">Agent</span>
+                        <span class="btn btn-danger" id="admin">Admin</span>
+                        <span class="btn btn-success" id="agent">Agent</span>
                     </div>
                 </div>
             </form>
