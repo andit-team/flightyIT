@@ -1,18 +1,12 @@
 @extends('admin.layout.app',['pageTitle' => __('Search Ticket')])
 @section('content')
 
-@component('admin.layout.inc.breadcrumb')
-@slot('title')
-Search Ticket
-@endslot
-@endcomponent
 @include('elements.alert')
-<div class="row">
+<div class="row mt-4">
     <div class="col-lg-12 col-md-12">
         <div class="card border-dark">
             <div class="card-header bg-dark">
                 <h4 class="card-title text-white"><i class="fa fa-search"></i>&nbsp;&nbsp; Search Tickets</h4>
-                <h6 class="card-subtitle"> Search from all Tickets</h6>
             </div>
             <div class="card-body">
                 {{-- Search --}}
@@ -31,7 +25,6 @@ Search Ticket
                                 <div class="form-group">
                                     <button class="btn search-btn"><i class="fa fa-search"></i></button>
                                     <a class="btn search-btn-reset" href="{{url('reports/income-statement')}}"><i class="fa fa-refresh"></i></a>
-                                    <button type="button" class="btn btn-success ml-3" style="padding: 10px 15px; border-radius:0px" onclick="invoiceprint()"> <i class="mdi mdi-printer"> </i> {{ __('messages.print') }} </button>
                                 </div>
                             </form>
                         </div> 
@@ -40,7 +33,7 @@ Search Ticket
                 <div class="table-responsive">
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
-                            <tr>
+                            <tr class="themeThead">
                                 <th width="80">{{ __('messages.sl') }}</th>
                                 <th>Name</th>
                                 <th>Departure</th>
