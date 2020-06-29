@@ -1,18 +1,13 @@
 @extends('admin.layout.app',['pageTitle' => __('Ticket Add')])
 @section('content')
 
-@component('admin.layout.inc.breadcrumb')
-@slot('title')
-Add New Ticket
-@endslot
-@endcomponent
 @include('elements.alert')
-<div class="row">
+{{-- Add Ticket --}}
+<div class="row mt-4">
     <div class="col-lg-12 col-md-12">
         <div class="card border-dark">
             <div class="card-header bg-dark">
                 <h4 class="card-title text-white"><i class="fa fa-ticket"></i>&nbsp;&nbsp;Add Ticket</h4>
-                <h6 class="card-subtitle">New Ticket add Form</h6>
             </div>
             <?php $i = 1;?>
             <div class="card-body">
@@ -94,12 +89,13 @@ Add New Ticket
                             </tbody>
                         </table>
                     </div>
-                    <button type="submit" name="save" value ="savePrint" class="btn waves-effect waves-light btn-lg btn-themecolor float-right formSave" style="margin-right:75px"> <i class="mdi mdi-printer"></i> {{ __('messages.save_print')}}</button>
+                    <button type="submit" name="save" value ="savePrint" class="btn waves-effect waves-light btn-md btn-themecolor float-right formSave" > <i class="mdi mdi-printer"></i> {{ __('messages.save')}}</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
 @push('js')
 <script>
