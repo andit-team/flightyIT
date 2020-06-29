@@ -1,10 +1,10 @@
-@extends('admin.layout.app',['pageTitle' => __('Main Dashboard')])
+@extends('admin.layout.app',['pageTitle' => __('Agent Dashboard')])
 @section('content')
 
 
 @component('admin.layout.inc.breadcrumb')
 @slot('title')
-{{ __('messages.dashboard') }}
+My Dashboard
 @endslot
 @endcomponent
 
@@ -52,7 +52,7 @@
     <div class="col-lg-4 col-md-5">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">My Collection </h3>
+                <h3 class="card-title">My Customers </h3>
                 <h6 class="card-subtitle">Different Devices Used to Visit</h6>
                 <div id="visitor" style="height:290px; width:100%;"></div>
             </div>
