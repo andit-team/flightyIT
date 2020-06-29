@@ -53,7 +53,7 @@
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         
-        @include('admin.layout.inc.sidebar.sidebar')
+        {{-- @include('admin.layout.inc.sidebar.sidebar') --}}
         
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
@@ -78,7 +78,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             @if(!isset($noFooter))
-                <footer class="footer"> © {{date('Y')}} {{session()->get('settings')[0]['footer_text']}} </footer>
+                <footer class="footer text-center"> © {{date('Y')}} {{session()->get('settings')[0]['footer_text']}} </footer>
             @endif
             <!-- ============================================================== -->
             <!-- End footer -->
