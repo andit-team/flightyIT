@@ -1,198 +1,248 @@
-@extends('admin.layout.app',['pageTitle' => 'New Agency','noFooter' => 'true',])
+@extends('admin.layout.app',['pageTitle' => 'Agency'])
 @section('content')
 
 @include('elements.alert')
 <div class="row">
-    <div class="col-lg-10 col-md-10 m-t-30 mx-auto">
-        <form class="form-material m-t-40 form" action="{{ route('agency.store') }}" method="post" autocomplete="off">
+    <div class="col-lg-10 col-md-10 mx-auto">
+        <form class="form-material mt-4 form" action="{{ route('agency.store') }}" method="post" autocomplete="off">
             @csrf
-            {{-- New Card --}}
             <div class="card">
                 <div class="card-header bg-dark">
-                    <h4 class="mb-0 text-white"><i class="fa fa-pencil"></i>&nbsp;&nbsp;New Agency</h4></div>
+                    <h4 class="mb-0 text-white"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Agency</h4></div>
                 <div class="card-body">
-                    <h3 class="card-title">Special title treatment</h3>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <hr>
-                    {{-- company, alias --}}
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 text-right control-label col-form-label">Company<sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" placeholder="Enter name here">
-                            @include('elements.feedback',['field' => 'name'])
-                        </div>
-                        
-                        <label for="alias" class="col-sm-2 text-right control-label col-form-label">Alias <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="alias" value="{{old('alias')}}" class="form-control" id="alias" placeholder="Alias name"  autocomplete="off">
-                            @include('elements.feedback',['field' => 'alias'])
-                        </div>
-                    </div>
-
-                    {{-- code, vat --}}
-                    <div class="form-group row">
-                        <label for="code" class="col-sm-2 text-right control-label col-form-label">Company Code<sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="code" value="{{old('code')}}" class="form-control" id="code" placeholder="Enter Company Code">
-                            @include('elements.feedback',['field' => 'code'])
-                        </div>
-                        
-                        <label for="vat" class="col-sm-2 text-right control-label col-form-label">Vat <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="vat" value="{{old('vat')}}" class="form-control" id="vat" placeholder="Vat number">
-                            @include('elements.feedback',['field' => 'vat'])
-                        </div>
-                    </div>
-
-                    {{-- address, phone --}}
-                    <div class="form-group row">
-                        <label for="address" class="col-sm-2 text-right control-label col-form-label">Company address<sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="address" value="{{old('address')}}" class="form-control" id="address" placeholder="Enter Company address">
-                            @include('elements.feedback',['field' => 'address'])
-                        </div>
-                        
-                        <label for="phone" class="col-sm-2 text-right control-label col-form-label">Phone <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone" placeholder="phone number">
-                            @include('elements.feedback',['field' => 'phone'])
-                        </div>
-                    </div>
-
-                    {{-- com_email, mobile --}}
-                    <div class="form-group row">
-                        <label for="com_email" class="col-sm-2 text-right control-label col-form-label">Company email<sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="com_email" name="com_email" value="{{old('com_email')}}" class="form-control" id="com_email" placeholder="Enter Company email">
-                            @include('elements.feedback',['field' => 'com_email'])
-                        </div>
-                        
-                        <label for="mobile" class="col-sm-2 text-right control-label col-form-label">Mobile <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="number" name="mobile" value="{{old('mobile')}}" class="form-control" id="mobile" placeholder="mobile number">
-                            @include('elements.feedback',['field' => 'mobile'])
-                        </div>
-                    </div>
-                    {{-- email, em_number --}}
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 text-right control-label col-form-label">Email<sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="Enter email">
-                            @include('elements.feedback',['field' => 'email'])
-                        </div>
-                        
-                        <label for="em_number" class="col-sm-2 text-right control-label col-form-label">Emergency Number <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="number" name="em_number" value="{{old('em_number')}}" class="form-control" id="em_number" placeholder="Emergency number">
-                            @include('elements.feedback',['field' => 'em_number'])
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    {{-- validity, type --}}
-                    <div class="form-group row">
-                        <label for="validity" class="col-sm-2 text-right control-label col-form-label">Company Validity<sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="validity" value="{{old('validity')}}" class="form-control" id="validity" placeholder="Enter validity here">
-                            @include('elements.feedback',['field' => 'validity'])
-                        </div>
-                        
-                        <label for="type" class="col-sm-2 text-right control-label col-form-label">Type <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="type" value="{{old('type')}}" class="form-control" id="type">
-                            @include('elements.feedback',['field' => 'type'])
-                        </div>
-                    </div>
-                    {{-- credit, linit --}}
-                    <div class="form-group row">
-                        <label for="credit" class="col-sm-2 text-right control-label col-form-label">Credit<sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="credit" value="{{old('credit')}}" class="form-control" id="credit" placeholder="Enter credit here">
-                            @include('elements.feedback',['field' => 'credit'])
-                        </div>
-                        
-                        <label for="credit_limit" class="col-sm-2 text-right control-label col-form-label">Credit Limit <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="credit_limit" name="credit_limit" value="{{old('credit_limit')}}" class="form-control" id="credit_limit">
-                            @include('elements.feedback',['field' => 'credit_limit'])
-                        </div>
-                    </div>
-                    {{-- note --}}
-                    <div class="form-group row">
-                        <label for="note" class="col-sm-2 text-right control-label col-form-label">Note:</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="note" value="{{old('note')}}" class="form-control" id="note">
-                            @include('elements.feedback',['field' => 'note'])
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    {{-- company, alias --}}
-                    <div class="form-group row">
-                        <label for="gds" class="col-sm-2 text-right control-label col-form-label">Gds id<sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="gds" value="{{old('gds')}}" class="form-control" id="gds" placeholder="Enter gds here">
-                            @include('elements.feedback',['field' => 'gds'])
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        
-                        <label for="alias" class="col-sm-2 text-right control-label col-form-label">Start Date <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="alias" value="{{old('alias')}}" class="form-control" id="alias" placeholder="Alias name"  autocomplete="off">
-                            @include('elements.feedback',['field' => 'alias'])
-                        </div>
-                        
-                        <label for="alias" class="col-sm-2 text-right control-label col-form-label">End Date <sup class="text-danger font-bold">*</sup> :</label>
-                        <div class="col-sm-4">
-                            <input type="text" name="alias" value="{{old('alias')}}" class="form-control" id="alias" placeholder="Alias name"  autocomplete="off">
-                            @include('elements.feedback',['field' => 'alias'])
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <div class="card-body">
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-info">Submit</button>
-                                <button type="button" class="btn btn-dark">Cancel</button>
+                    <h4 class="text-muted"><i class="fa fa-cubes"></i> Basic Info</h4>
+                    <hr class="bg-gray">
+                    <div class="row">
+                        {{-- Agency name --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('name') ? ' has-danger' : '' }}">
+                                <label for="name" class="form-control-label">Agency Name:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" placeholder="Enter name here" required>
+                                @include('elements.feedback',['field' => 'name'])
                             </div>
                         </div>
+                        {{-- alias --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('alias') ? ' has-danger' : '' }}">
+                                <label for="alias" class="form-control-label">Agency alias:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="alias" value="{{old('alias')}}" class="form-control" id="alias" placeholder="Enter alias here" required>
+                                @include('elements.feedback',['field' => 'alias'])
+                            </div>
+                        </div>
+                        {{-- code --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('code') ? ' has-danger' : '' }}">
+                                <label for="code" class="form-control-label">Agency Code:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="code" value="{{old('code')}}" class="form-control" id="code" placeholder="Enter code here" required>
+                                @include('elements.feedback',['field' => 'code'])
+                            </div>
+                        </div>
+                        {{-- vat --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('vat') ? ' has-danger' : '' }}">
+                                <label for="vat" class="form-control-label">Vat REG No.:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="vat" value="{{old('vat')}}" class="form-control" id="vat" placeholder="Enter vat no. here" required>
+                                @include('elements.feedback',['field' => 'vat'])
+                            </div>
+                        </div>
+                        {{-- address --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('address') ? ' has-danger' : '' }}">
+                                <label for="address" class="form-control-label">Address:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="address" value="{{old('address')}}" class="form-control" id="address" placeholder="Enter address" required>
+                                @include('elements.feedback',['field' => 'address'])
+                            </div>
+                        </div>
+                        {{-- phone --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('phone') ? ' has-danger' : '' }}">
+                                <label for="phone" class="form-control-label">Phone number:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone" placeholder="Enter phone no. here" required>
+                                @include('elements.feedback',['field' => 'phone'])
+                            </div>
+                        </div>
+                        {{-- mobile --}}
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group {{ $errors->has('mobile') ? ' has-danger' : '' }}">
+                                <label for="mobile" class="form-control-label">Mobile:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="mobile" value="{{old('phone')}}" class="form-control" id="mobile" placeholder="Enter mobile no. here" required>
+                                @include('elements.feedback',['field' => 'mobile'])
+                            </div>
+                        </div>
+                        {{-- email --}}
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group {{ $errors->has('email') ? ' has-danger' : '' }}">
+                                <label for="email" class="form-control-label">Email:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="Enter email no. here" required>
+                                @include('elements.feedback',['field' => 'email'])
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="text-muted"><i class="fa fa-cubes"></i> Validity & Credit</h4>
+                    <hr class="bg-gray">
+                    <div class="row">
+                        {{-- Agency Validity --}}
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group {{ $errors->has('validity') ? ' has-danger' : '' }}">
+                                <label for="validity" class="form-control-label">Agency validity:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="date" name="validity" value="{{old('validity')}}" class="form-control" id="validity" required>
+                                @include('elements.feedback',['field' => 'validity'])
+                            </div>
+                        </div>
+                        {{-- Type --}}
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group {{ $errors->has('type') ? ' has-danger' : '' }}">
+                                <label for="type" class="form-control-label">Agency type:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="type" value="{{old('type')}}" class="form-control" id="type" placeholder="Enter type here" required>
+                                @include('elements.feedback',['field' => 'type'])
+                            </div>
+                        </div>
+                        {{-- Credit --}}
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group {{ $errors->has('credit') ? ' has-danger' : '' }}">
+                                <label for="credit" class="form-control-label">Credit:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="credit" value="{{old('credit')}}" class="form-control" id="credit" placeholder="Enter Credit here" required>
+                                @include('elements.feedback',['field' => 'credit'])
+                            </div>
+                        </div>
+                        {{-- limit --}}
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group {{ $errors->has('credit_limit') ? ' has-danger' : '' }}">
+                                <label for="credit_limit" class="form-control-label">Credit limit:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="credit_limit" value="{{old('credit_limit')}}" class="form-control" id="credit_limit" placeholder="Credit Limit" required>
+                                @include('elements.feedback',['field' => 'credit_limit'])
+                            </div>
+                        </div>
+                        {{-- note --}}
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group {{ $errors->has('note') ? ' has-danger' : '' }}">
+                                <label for="note" class="form-control-label">Note:<sup class="text-danger font-bold">*</sup> :</label>
+                                <textarea type="text" name="note" value="{{old('note')}}" class="form-control" id="note" placeholder="Enter note" required></textarea>
+                                @include('elements.feedback',['field' => 'note'])
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="text-muted"><i class="fa fa-cubes"></i> Others</h4>
+                    <hr class="bg-gray">
+                    <div class="row">
+                        {{-- gds --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('gds_id') ? ' has-danger' : '' }}">
+                                <label for="gds_id" class="form-control-label">Agency GDS ID:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="text" name="gds_id" value="{{old('gds_id')}}" class="form-control" id="gds_id" placeholder="Enter gds_id here" required>
+                                @include('elements.feedback',['field' => 'gds_id'])
+                            </div>
+                        </div>
+                        {{-- start --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('start_date') ? ' has-danger' : '' }}">
+                                <label for="start_date" class="form-control-label">Start Date:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="date" name="start_date" value="{{old('start_date')}}" class="form-control" id="start_date" required>
+                                @include('elements.feedback',['field' => 'start_date'])
+                            </div>
+                        </div>
+                        {{-- end --}}
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group {{ $errors->has('end_date') ? ' has-danger' : '' }}">
+                                <label for="end_date" class="form-control-label">End Date:<sup class="text-danger font-bold">*</sup> :</label>
+                                <input type="date" name="end_date" value="{{old('end_date')}}" class="form-control" id="end_date" required>
+                                @include('elements.feedback',['field' => 'end_date'])
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group m-b-0">
+                        <button type="submit" class="btn btn-themecolor btn-md waves-effect float-right waves-light m-t-10">{{ __('messages.save') }}</button>
                     </div>
                 </div>
             </div>
         </form>    
     </div>
 </div>
-@include('elements.dataTableOne')
-@endsection
-
+{{-- List Table --}}
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card border-dark">
+            <div class="card-header bg-dark">
+                <h4 class="card-title text-white"><i class="fa fa-users"></i>&nbsp;&nbsp;Agency List</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr class="themeThead">
+                                <th width="80">{{ __('messages.sl') }}</th>
+                                <th>{{ __('messages.name') }}</th>
+                                <th>{{ __('messages.email') }}</th>
+                                <th>{{ __('messages.phone') }}</th>
+                                <th width='150'>{{ __('messages.action') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @push('js')
-    <script>
-        $('#house_rent').on('keyup change',function(){
-            $(this).val();
-        });
+<!-- This is data table -->
+<script src="{{ asset('material') }}/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- start - This is for export functionality only -->
+<script src="{{ asset('js') }}/dataTables.buttons.min.js"></script>
+<script src="{{ asset('js') }}/buttons.flash.min.js"></script>
+<script src="{{ asset('js') }}/jszip.min.js"></script>
+<script src="{{ asset('js') }}/pdfmake.min.js"></script>
+<script src="{{ asset('js') }}/vfs_fonts.js"></script>
+<script src="{{ asset('js') }}/buttons.html5.min.js"></script>
+<script src="{{ asset('js') }}/buttons.print.min.js"></script>
 
-        function getValue(v,input){
-            var s = 0;
-            if(v == input){
-                return parseFloat($(this).val())||0;
-            }else{
-                return parseFloat($('#'+input).val())||0;
-            }
-            return s;
-        }
-        // function addition(forPress){
-        //     $(this).val();
-        //     // var sum = parseFloat($(this).val())||0;
-        //     // sum += getValue(forPress,'house_rent');
-        //     // sum += getValue(forPress,'medical');
-        //     console.log(forPress);
-        // }
-        // function deduction(){}
-        // function calculate(){
-
-        // }
-    </script>
+<script>
+    $(document).ready(function() {
+                $('#myTable').DataTable();
+                $(document).ready(function() {
+                    var table = $('#example').DataTable({
+                        "columnDefs": [{
+                            "visible": false,
+                            "targets": 2
+                        }],
+                        "order": [
+                            [2, 'asc']
+                        ],
+                        "displayLength": 25,
+                        "drawCallback": function(settings) {
+                            var api = this.api();
+                            var rows = api.rows({
+                                page: 'current'
+                            }).nodes();
+                            var last = null;
+                            api.column(2, {
+                                page: 'current'
+                            }).data().each(function(group, i) {
+                                if (last !== group) {
+                                    $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                    last = group;
+                                }
+                            });
+                        }
+                    });
+                    // Order by the grouping
+                    $('#example tbody').on('click', 'tr.group', function() {
+                        var currentOrder = table.order()[0];
+                        if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                            table.order([2, 'desc']).draw();
+                        } else {
+                            table.order([2, 'asc']).draw();
+                        }
+                    });
+                });
+            });
+            $('#example23').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+</script>
 @endpush
+@endsection
