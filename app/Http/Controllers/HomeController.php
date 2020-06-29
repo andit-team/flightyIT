@@ -129,7 +129,7 @@ class HomeController extends Controller
 
     public function process_login(Request $request){
         if (Sentinel::check()) {
-            return redirect('dashboard');
+            return redirect('system-admin/dashboard');
         }
         $request->validate([
             'email'     => 'required|email|exists:users,email',
