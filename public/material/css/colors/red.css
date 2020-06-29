@@ -217,7 +217,8 @@ a.link:hover, a.link:focus {
 .themeThead{
   color: #fff;
   font-weight: bold;
-  background: #f62d51;
+  /* background: #f62d51; */
+  background: #343a40;
 }
 input[type=text],
 input[type=email],
