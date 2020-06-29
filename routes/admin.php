@@ -27,7 +27,7 @@ Route::get('system-admin/logout', 'HomeController@logout');
     //     Route::resource('menu','CmsMenuController');
     // });
     // Route::resource('cms','CmsController'); 
-    Route::resource('payroll','PayrollController'); 
+    // Route::resource('payroll','PayrollController'); 
 
     // Agent
     Route::resource('agent', 'AgentController'); 
