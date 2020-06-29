@@ -22,10 +22,14 @@ class AgentController extends Controller
      */
     public function index()
     {
+        if (!Sentinel::hasAccess('agent-create')) {
+            Session::flash('error', 'Permission Denied!');
+            return redirect()->back();
+        }
         $agents = Sentinel::findRoleBySlug('agent'); 
         $agents = $agents->users()->get();
-
-        return view('admin.agent.index',compact('agents'));
+        $roles = DB::table('roles')->get();
+        return view('admin.agent.create',compact('roles','agents'));
     }
 
     /**
@@ -39,8 +43,10 @@ class AgentController extends Controller
             Session::flash('error', 'Permission Denied!');
             return redirect()->back();
         }
+        $agents = Sentinel::findRoleBySlug('agent'); 
+        $agents = $agents->users()->get();
         $roles = DB::table('roles')->get();
-        return view('admin.agent.create',compact('roles'));
+        return view('admin.agent.create',compact('roles','agents'));
     }
 
     /**
