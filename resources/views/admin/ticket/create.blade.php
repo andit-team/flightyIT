@@ -7,7 +7,7 @@
     <div class="col-lg-12 col-md-12">
         <div class="card border-dark">
             <div class="card-header bg-dark">
-                <h4 class="card-title text-white"><i class="fa fa-ticket"></i>&nbsp;&nbsp;Add Ticket</h4>
+                <h4 class="text-white"><i class="fa fa-ticket"></i>&nbsp;&nbsp;Add Ticket</h4>
             </div>
             <?php $i = 1;?>
             <div class="card-body">
@@ -17,18 +17,18 @@
                         <table class="table table-bordered table-hover purchaseTable" id="purchaseTable">
                             <thead>
                                 <tr class="themeThead">
-                                    <th class="text-left">First Name<i class="text-white">*</i></th>
-                                    <th class="text-left">Last Name<i class="text-white">*</i></th>
-                                    <th class="text-left">Departure<i class="text-white">*</i></th>
-                                    <th class="text-left">Return<i class="text-white">*</i></th>
-                                    <th class="text-left">From<i class="text-white">*</i></th>
-                                    <th class="text-left">To<i class="text-white">*</i></th>
-                                    <th class="text-left">Airline<i class="text-white">*</i></th>
-                                    <th class="text-left">Mobile<i class="text-white">*</i></th>
-                                    <th class="text-left">Passport<i class="text-white">*</i></th>
-                                    <th class="text-left">Ticket No.<i class="text-white">*</i></th>
-                                    <th class="text-left">Rate<i class="text-white">*</i></th>
-                                    <th class="text-left">Agent<i class="text-white">*</i></th>
+                                    <th class="text-left">First Name</th>
+                                    <th class="text-left">Last Name</th>
+                                    <th class="text-left">Departure</th>
+                                    <th class="text-left">Return</th>
+                                    <th class="text-left">From</th>
+                                    <th class="text-left">To</th>
+                                    <th class="text-left">Airline</th>
+                                    <th class="text-left">Mobile</th>
+                                    <th class="text-left">Passport</th>
+                                    <th class="text-left">Ticket No.</th>
+                                    <th class="text-left">Rate</th>
+                                    <th class="text-left">Agent</th>
                                     <th class="text-right">{{ __('messages.action')}}</th>
                                 </tr>
                             </thead>
