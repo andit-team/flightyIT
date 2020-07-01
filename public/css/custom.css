@@ -94,3 +94,88 @@
 /* #dataTableNoPaging td, #dataTableNoPaging th {
     border-color: #272c33;
 } */
+
+
+/* Newly Added */
+
+.topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
+    font-size: 17px;
+    line-height: 27px !important;
+}
+.topbar .top-navbar {
+    min-height: 45px !important;
+}
+.topbar .top-navbar .navbar-header {
+    line-height: 45px !important;
+}
+.topbar .top-navbar .navbar-header .navbar-brand b {
+    line-height: 50px !important;
+}
+
+.card-header {
+    padding: 1px 1.25rem;
+    
+}
+.card-header h4 {
+    margin: 2px 2px;
+    color: #333333;
+    font-weight: bold;
+    
+}
+
+body, .page-wrapper {
+    background-color: #81BCEA;
+    background-image: url('http://dhillon.it/maan/images/bgbody.gif');
+    background-repeat: repeat-x;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+body, td {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #333333;
+    background-color: #CCCCCC;
+}
+
+table.table-bordered.custom-tbl tr td, table.table-bordered.custom-tbl tr th {
+    border: 1px solid #000;
+    /* padding-left: 4px; */
+    color: #000;
+}
+.themeThead{
+    color: #fff;
+    font-weight: bold;
+    background: #dac18f
+}
+
+th {
+    font-weight: 600;
+    text-align: center;
+    padding: 6px 4px;
+}
+td {
+    text-align: center;
+    padding: 3px 8px;
+}
+td > input{
+    background: #fff !important;
+    min-height: 32px !important;
+}
+
+
+
+
+legend {
+    display: block;
+    padding-inline-start: 2px;
+    padding-inline-end: 2px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    width: 8%;
+    border-image: initial;
+    font-size: 15px;
+    text-align: center;
+}

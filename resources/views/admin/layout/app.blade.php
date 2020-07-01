@@ -78,7 +78,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             @if(!isset($noFooter))
-                <footer class="footer text-center"> © {{date('Y')}} {{session()->get('settings')[0]['footer_text']}} </footer>
+                {{-- <footer class="footer text-center"> © {{date('Y')}} {{session()->get('settings')[0]['footer_text']}} </footer> --}}
             @endif
             <!-- ============================================================== -->
             <!-- End footer -->

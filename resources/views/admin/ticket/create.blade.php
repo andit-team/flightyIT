@@ -5,67 +5,69 @@
 {{-- Add Ticket --}}
 <div class="row mt-4">
     <div class="col-lg-12 col-md-12">
-        <div class="card border-dark">
-            <div class="card-header bg-dark">
-                <h4 class="text-white"><i class="fa fa-ticket"></i>&nbsp;&nbsp;Add Ticket</h4>
+            <div class="card-header" style="background: url('http://dhillon.it/maan/images/headers3.jpg')">
+                <h4><i class="fa fa-ticket"></i>&nbsp;&nbsp;Add Ticket</h4>
             </div>
+            
             <?php $i = 1;?>
-            <div class="card-body">
+            <fieldset style="border:solid #FFFFFF 1px; width:99%; padding:4px">
+                <legend style="color: #CCCCCC">Ticket Information</legend>
+            
                 <form class="form-material" action="{{ route('ticket.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="table-responsive" style="margin-top: 10px">
-                        <table class="table table-bordered table-hover purchaseTable" id="purchaseTable">
+                        <table class="table-striped table-bordered custom-tbl" id="purchaseTable">
                             <thead>
-                                <tr class="themeThead">
-                                    <th class="text-left">First Name</th>
-                                    <th class="text-left">Last Name</th>
-                                    <th class="text-left">Departure</th>
-                                    <th class="text-left">Return</th>
-                                    <th class="text-left">From</th>
-                                    <th class="text-left">To</th>
-                                    <th class="text-left">Airline</th>
-                                    <th class="text-left">Mobile</th>
-                                    <th class="text-left">Passport</th>
-                                    <th class="text-left">Ticket No.</th>
-                                    <th class="text-left">Rate</th>
-                                    <th class="text-left">Agent</th>
-                                    <th class="text-right">{{ __('messages.action')}}</th>
+                                <tr class="themeThead" style="background-color: rgb(204, 255, 102);">
+                                    <th class="text-center">First Name</th>
+                                    <th class="text-center">Last Name</th>
+                                    <th class="text-center">Departure</th>
+                                    <th class="text-center">Return</th>
+                                    <th class="text-center">From</th>
+                                    <th class="text-center">To</th>
+                                    <th class="text-center">Airline</th>
+                                    <th class="text-center">Mobile</th>
+                                    <th class="text-center">Passport</th>
+                                    <th class="text-center">Ticket No.</th>
+                                    <th class="text-center">Rate</th>
+                                    <th class="text-center">Agent</th>
+                                    <th class="text-center">{{ __('messages.action')}}</th>
                                 </tr>
                             </thead>
                             <tbody id="addSalesItem">
                                     <tr class="firstRow">
                                         <td>
-                                            <input type="text"  name="first_name[]"   class="form-control" placeholder="first Name" required >
+                                            <input type="text"  name="first_name[]"   class="text-center form-control" placeholder="first Name" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="last_name[]"   class="form-control" placeholder="lirst Name" required >
+                                            <input type="text"  name="last_name[]"   class="text-center form-control" placeholder="lirst Name" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="departure[]"   class="form-control datepicker" value="{{date('d-m-Y')}}" required >
+                                            <input type="text"  name="departure[]"   class="text-center form-control datepicker" value="{{date('d-m-Y')}}" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="return[]"   class="form-control datepicker" value="{{date('d-m-Y')}}"  required >
+                                            <input type="text"  name="return[]"   class="text-center form-control datepicker" value="{{date('d-m-Y')}}"  required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="from[]"   class="form-control" placeholder="from" required >
+                                            <input type="text"  name="from[]"   class="text-center form-control" placeholder="from" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="to[]"   class="form-control" placeholder="to" required >
+                                            <input type="text"  name="to[]"   class="text-center form-control" placeholder="to" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="airline[]"   class="form-control" placeholder="airline" required >
+                                            <input type="text"  name="airline[]"   class="text-center form-control" placeholder="airline" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="mobile[]"   class="form-control" placeholder="mobile" required >
+                                            <input type="text"  name="mobile[]"   class="text-center form-control" placeholder="mobile" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="passport[]"   class="form-control" placeholder="passport number" required >
+                                            <input type="text"  name="passport[]"   class="text-center form-control" placeholder="passport number" required >
                                         </td>
                                         <td>
-                                            <input type="text"  name="ticket_no[]"   class="form-control" placeholder="Ticket No." required >
+                                            <input type="text"  name="ticket_no[]"   class="text-center form-control" placeholder="Ticket No." required >
                                         </td>
                                         <td>
-                                            <input type="number"  name="rate[]"   class="form-control" placeholder="rate" required >
+                                            <input type="number"  name="rate[]"   class="text-center form-control" placeholder="rate" required >
                                         </td>
                                         <td>
                                         @if(Sentinel::inRole('admin'))
@@ -89,10 +91,10 @@
                             </tbody>
                         </table>
                     </div>
-                    <button type="submit" name="save" value ="savePrint" class="btn waves-effect waves-light btn-md btn-themecolor float-right formSave" > <i class="mdi mdi-printer"></i> {{ __('messages.save')}}</button>
+                    <button type="submit" name="save" value ="savePrint" class="btn waves-effect waves-light btn-sm btn-success formSave mt-2" >Submit</button>
+                    <button type="button"  class="btn waves-effect waves-light btn-sm btn-themecolor mt-2" onclick="window.reload()">Reset</button>
                 </form>
-            </div>
-        </div>
+            </fieldset>
     </div>
 </div>
 

@@ -102,7 +102,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="" class="table-striped table-bordered custom-tbl" cellspacing="0" width="100%">
                                 <thead>
                                     <tr class="themeThead">
                                         <th width="80">{{ __('messages.sl') }}</th>
@@ -110,7 +110,7 @@
                                         <th>{{ __('messages.email') }}</th>
                                         <th>{{ __('messages.phone') }}</th>
                                         <th>{{ __('messages.last_login') }}</th>
-                                        <th width='150'>{{ __('messages.action') }}</th>
+                                        {{-- <th width='150'>{{ __('messages.action') }}</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -122,14 +122,14 @@
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->phone}}</td>
                                         <td><?php echo Core::globalDateTime($user->last_login)?></td>
-                                        <td style="display: flex; justify-content: space-evenly;">
+                                        {{-- <td style="display: flex; justify-content: space-evenly;">
                                             <button type="button" class="btn waves-effect waves-light btn-xs btn-info"><i class="fa fa-eye"></i></button>
                                             <a class="btn waves-effect waves-light text-light btn-xs btn-warning" href="{{url('system-admin/users/'.$user->id.'/edit')}}"><i class="fa fa-edit"></i></a>
                                             <form action="{{url('system-admin/users/'.$user->id.'/delete')}}" method="post" style="margin-top:-2px" id="deleteButton{{$user->id}}">
                                                 @csrf
                                                 <button type="submit" class="btn waves-effect waves-light btn-xs btn-danger" onclick="sweetalertDelete({{$user->id}})"><i class="fa fa-trash-o"></i></button>
                                             </form>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @endforeach
                                 </tbody>

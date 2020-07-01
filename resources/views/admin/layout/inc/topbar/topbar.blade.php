@@ -30,9 +30,9 @@
             <ul class="navbar-nav my-lg-0">
 
                 {{-- agent --}}
-                @if(Sentinel::hasAccess('agency'))
+                {{-- @if(Sentinel::hasAccess('agency'))
                     <li class="nav-item"><a href="{{url('system-admin/agency/create')}}" class="nav-link waves-effect waves-dark"><i class="mdi mdi-settings-box"></i> Add Agency</a></li>
-                @endif
+                @endif --}}
                 {{-- agent --}}
                 @if(Sentinel::hasAccess('agent'))
                     <li class="nav-item"><a href="{{url('system-admin/agent/create')}}" class="nav-link waves-effect waves-dark"><i class="mdi mdi-settings-box"></i> Add Agent</a></li>

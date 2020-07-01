@@ -38,11 +38,12 @@ File: scss
 .topbar {
   background: #f62d51;
   /* Old browsers */
-  background: -moz-linear-gradient(left, #f62d51 0%, #660fb5 100%);
+  /* background: -moz-linear-gradient(left, #f62d51 0%, #660fb5 100%); */
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #f62d51 0%, #660fb5 100%);
+  /* background: -webkit-linear-gradient(left, #f62d51 0%, #660fb5 100%); */
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #f62d51 0%, #660fb5 100%);
+  /* background: linear-gradient(to right, #f62d51 0%, #660fb5 100%); */
+  background: linear-gradient(#a79898, black);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
@@ -204,7 +205,7 @@ input[type=password],
 input[type=number],
 select,
 textarea {
-  border-left: 5px solid #f62d51 !important;
+  /* border-left: 5px solid #f62d51 !important; */
   /* border-right: 4px solid #009efb !important; */
   border-radius: 4px !important;
   padding: 0px 0px 0 10px !important;
